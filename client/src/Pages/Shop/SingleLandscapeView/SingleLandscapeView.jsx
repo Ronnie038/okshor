@@ -3,8 +3,46 @@ import { Icon } from "@iconify/react";
 // import Rating from "react-rating";
 // import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { addToCart } from "../../../store/slices/CartSlices";
+import { useDispatch } from "react-redux";
+import { useState } from "react";
+import toast from "react-hot-toast";
+// import { useDispatch } from "react-redux";
 
-const SingleLandscapeView = ({ product }) => {
+const SingleLandscapeView = ({ product, index }) => {
+  const user = true;
+  const dispatch = useDispatch();
+
+  const [addAnimate, setAddAnimate] = useState([]);
+
+  const notify = () =>
+    toast.success("Your Product Added Successfull", {
+      style: {
+        backgroundColor: "#0C4E67",
+        color: "white",
+      },
+      className: "bg-black",
+    });
+
+  const handleAddToCart = (item, index, e) => {
+    e.preventDefault();
+
+    dispatch(addToCart(item));
+    const newAddAnimate = [...addAnimate];
+    // console.log(addAnimate);
+
+    newAddAnimate[index] = "animate__animated animate__fadeOutTopRight z-40";
+
+    setAddAnimate(newAddAnimate);
+
+    if (user) {
+      notify();
+    }
+
+    setTimeout(() => {
+      setAddAnimate("");
+    }, 1000);
+  };
   return (
     <div>
       <div className="relative product cursor-pointer lg:border p-5 rounded-md  flex justify-around gap-5">
@@ -25,9 +63,13 @@ const SingleLandscapeView = ({ product }) => {
               </del>
               <span className="text-xl">{product?.offerPrice}৳</span>
             </div>
-            <button className="px-3 py-2 border bg-indigo-900 hover:bg-red-600 font-semibold text-white transition-all duration-300 rounded-md">
+            <Link
+              to={user ? "" : "/login"}
+              onClick={(e) => handleAddToCart(product, index, e)}
+              className="px-3 py-2 border bg-indigo-900 hover:bg-red-600 font-semibold text-white transition-all duration-300 rounded-md"
+            >
               Add to Cart
-            </button>
+            </Link>
           </div>
         </div>
       </div>

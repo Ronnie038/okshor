@@ -31,6 +31,10 @@ const Navbar = () => {
       text: "Dashboard",
       href: "/dashboard",
     },
+    {
+      text: "Checkout",
+      href: "/checkout",
+    },
   ];
 
   const toggleMenu = () => {

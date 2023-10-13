@@ -4,14 +4,51 @@ import { Icon } from "@iconify/react";
 // import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import "./SingleProduct.css";
+import { addToCart } from "../../store/slices/CartSlices";
+import { useState } from "react";
+import toast from "react-hot-toast";
+import { useDispatch } from "react-redux";
 
-const SingleProduct = ({ product, idx }) => {
+const SingleProduct = ({ product, index }) => {
   //   const [products, setProducts] = useState([]);
   //   useEffect(() => {
   //     fetch("products.json")
   //       .then((res) => res.json())
   //       .then((data) => setProducts(data));
   //   }, [products]);
+  const user = true;
+  const dispatch = useDispatch();
+
+  const [addAnimate, setAddAnimate] = useState([]);
+
+  const notify = () =>
+    toast.success("Your Product Added Successfull", {
+      style: {
+        backgroundColor: "#0C4E67",
+        color: "white",
+      },
+      className: "bg-black",
+    });
+
+  const handleAddToCart = (item, index, e) => {
+    e.preventDefault();
+
+    dispatch(addToCart(item));
+    const newAddAnimate = [...addAnimate];
+    // console.log(addAnimate);
+
+    newAddAnimate[index] = "animate__animated animate__fadeOutTopRight z-40";
+
+    setAddAnimate(newAddAnimate);
+
+    if (user) {
+      notify();
+    }
+
+    setTimeout(() => {
+      setAddAnimate("");
+    }, 1000);
+  };
   return (
     <div>
       <div className="relative product flex flex-col justify-between cursor-pointer lg:border p-3 rounded-md h-[360px] ">
@@ -34,9 +71,13 @@ const SingleProduct = ({ product, idx }) => {
           {/* <button className="product_btn hover:bg-secondary font-semibold  border border-black hover:border-primary text-black mt-5 rounded-md py-2 px-5 transition-all duration-300 ease-in-out">
             Add to Cart
           </button> */}
-          <button className="px-3 py-2 border bg-indigo-900 hover:bg-red-600 font-semibold text-white transition-all duration-300 rounded-md">
+          <Link
+            to={user ? "" : "/login"}
+            onClick={(e) => handleAddToCart(product, index, e)}
+            className="px-3 py-2 border bg-indigo-900 hover:bg-red-600 font-semibold text-white transition-all duration-300 rounded-md"
+          >
             Add to Cart
-          </button>
+          </Link>
         </div>
         <div className="flex productCart gap-5 flex-col absolute right-0 top-28">
           <Link to="">
