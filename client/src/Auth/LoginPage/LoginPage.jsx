@@ -66,10 +66,10 @@ const LoginPage = () => {
         <div className=" ">
           <div className="h">
             <div className=" flex-col lg:flex-row-reverse">
-              <div className="xl:max-w-full lg:max-w-3xl md:max-w-2xl max-w-sm flex-shrink-0 rounded-md shadow-md bg-white mx-1 md:mx-0 lg:mx-0 xl:mx-0 ">
+              <div className="xl:max-w-3xl lg:max-w-2xl md:max-w-xl max-w-sm flex-shrink-0 rounded-md shadow-md bg-white mx-auto">
                 <form
                   onSubmit={handleSubmit(onSubmit)}
-                  className=" w-[45%] mx-auto my-7 lg:px-28 md:px-28 px-[16px] space-y-5 py-16"
+                  className="  my-7 lg:px-28 md:px-28 px-[16px] space-y-5 py-16"
                 >
                   <div>
                     <p>Welcome to</p>
@@ -146,7 +146,7 @@ const LoginPage = () => {
                     <Link className=" p-2 rounded-none w-full lg:w-auto border border-black">
                       <div
                         onClick={() => googleLogin()}
-                        className="flex items-center gap-2 p-1"
+                        className="flex items-center justify-center gap-2 p-1"
                       >
                         <Icon
                           icon="entypo-social:google"
