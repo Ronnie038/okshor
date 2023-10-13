@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Confirmation</title>
+</head>
+
+<body>
+    <div class="mb-4">
+        <p>
+            <strong>Order Id:</strong>
+            <%= order._id %>
+        </p>
+        <p>
+            <% if (order && order.transactionId) { %>
+                <strong>Transaction Id:</strong>
+                <span>
+                    <%= order.transactionId %>
+                </span>
+                <% } %>
+        </p>
+        <p>
+            <strong>Order Date:</strong>
+            <%= new Date(order.createdAt).toLocaleDateString() %>
+        </p>
+    </div>
+    <div class="mb-4">
+        <h3 class="text-lg font-semibold">Customer Details</h3>
+        <p>
+            <strong>Name:</strong>
+            <%= order?.user?.name %>
+        </p>
+        <p>
+            <strong>Contact Number:</strong>
+            <%= order?.contactNumber %>
+        </p>
+        <p>
+            <strong>Address:</strong>
+            <%= order?.address %>, <%= order?.area %>, <%= order?.city %>
+        </p>
+    </div>
+    <div>
+        <h3 class="text-lg font-semibold">Products</h3>
+        <table class="w-full mt-4">
+            <thead>
+                <tr>
+                    <th class="text-left">Name</th>
+                    <th class="text-left">Quantity</th>
+                    <th class="text-left">Price</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% order?.products?.forEach((product)=> { %>
+                    <tr>
+                        <td class="text-left">
+                            <%= product.name %>
+                        </td>
+                        <td class="text-left">
+                            <%= product.quantity %>
+                        </td>
+                        <td class="text-left">৳<%= product.price %>
+                        </td>
+                    </tr>
+                    <% }); %>
+            </tbody>
+        </table>
+    </div>
+    <p>Vat/Tax 10% : ৳<%= order?.vat %>
+    </p>
+    <p>Delivery Fee : ৳<%= order?.deliveryFee %>
+    </p>
+    <div class="mt-6">
+        <p class="text-lg">
+            <strong>Total:</strong> ৳<%= order?.price %>
+        </p>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,108 @@
+[
+	{
+		"name": "Product 1",
+		"description": "Description for Product 1",
+		"price": 19.99,
+		"status": "in-stock",
+		"colors": ["Red", "Blue"],
+		"size": ["S", "M", "L"],
+		"imageURLs": [
+			"https://example.com/image1.jpg",
+			"https://example.com/image2.jpg"
+		],
+		"category": "Clothing"
+	},
+	{
+		"name": "Product 2",
+		"description": "Description for Product 2",
+		"price": 29.99,
+		"status": "in-stock",
+		"colors": ["Black"],
+		"size": ["M", "L", "XL"],
+		"imageURLs": ["https://example.com/image3.jpg"],
+		"category": "Footwear"
+	},
+	{
+		"name": "Product 3",
+		"description": "Description for Product 3",
+		"price": 9.99,
+		"status": "in-stock",
+		"colors": ["Green", "Yellow"],
+		"size": ["S", "M"],
+		"imageURLs": [
+			"https://example.com/image4.jpg",
+			"https://example.com/image5.jpg"
+		],
+		"category": "Accessories"
+	},
+	{
+		"name": "Product 4",
+		"description": "Description for Product 4",
+		"price": 49.99,
+		"status": "out-of-stock",
+		"colors": ["White"],
+		"size": ["L", "XL", "2XL"],
+		"imageURLs": ["https://example.com/image6.jpg"],
+		"category": "Clothing"
+	},
+	{
+		"name": "Product 5",
+		"description": "Description for Product 5",
+		"price": 39.99,
+		"status": "in-stock",
+		"colors": ["Purple"],
+		"size": ["S", "M", "L", "XL"],
+		"imageURLs": ["https://example.com/image7.jpg"],
+		"category": "Clothing"
+	},
+	{
+		"name": "Product 6",
+		"description": "Description for Product 6",
+		"price": 14.99,
+		"status": "in-stock",
+		"colors": ["Orange"],
+		"size": ["S", "M", "L"],
+		"imageURLs": ["https://example.com/image8.jpg"],
+		"category": "Accessories"
+	},
+	{
+		"name": "Product 7",
+		"description": "Description for Product 7",
+		"price": 64.99,
+		"status": "in-stock",
+		"colors": ["Blue"],
+		"size": ["M", "L", "XL"],
+		"imageURLs": ["https://example.com/image9.jpg"],
+		"category": "Footwear"
+	},
+	{
+		"name": "Product 8",
+		"description": "Description for Product 8",
+		"price": 24.99,
+		"status": "in-stock",
+		"colors": ["Red"],
+		"size": ["M", "L"],
+		"imageURLs": ["https://example.com/image10.jpg"],
+		"category": "Accessories"
+	},
+	{
+		"name": "Product 9",
+		"description": "Description for Product 9",
+		"price": 34.99,
+		"status": "in-stock",
+		"colors": ["Black", "White"],
+		"size": ["S", "M", "L", "XL", "2XL"],
+		"imageURLs": ["https://example.com/image11.jpg"],
+		"category": "Clothing"
+	},
+	{
+		"name": "Product 10",
+		"description": "Description for Product 10",
+		"price": 59.99,
+		"status": "in-stock",
+		"colors": ["Green"],
+		"size": ["L", "XL"],
+		"imageURLs": ["https://example.com/image12.jpg"],
+		"category": "Footwear"
+	}
+]

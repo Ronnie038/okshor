@@ -1,0 +1,158 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* body {
+  font-family: "Bangla", Arial, sans-serif !important;
+} */
+/* SingleProduct Css */
+
+.productCart {
+  visibility: hidden;
+  opacity: 0;
+}
+
+.product:hover .productCart {
+  visibility: visible;
+  opacity: 1;
+}
+
+.product:hover .productImg {
+  background-image: linear-gradient(180deg, #1d1c3a 0%, transparent 95%);
+  transition: all 300ms ease-in-out;
+
+  background-position: 100% 0;
+}
+
+/* single product details img gallery slider */
+.image-gallery-slide-wrapper {
+  /* border: 1px solid black; */
+  border-radius: 5px;
+  margin-bottom: 10px;
+  transition: 0.3s;
+}
+
+.image-gallery-image {
+  width: 100%;
+  height: 450px;
+  margin-bottom: 40px;
+  transition: 0.3s;
+}
+
+.image-gallery-image:hover {
+  transform: scale(1.6);
+  border-radius: 5px;
+}
+
+.image-gallery-left-nav {
+  display: none;
+}
+
+.image-gallery-right-nav {
+  display: none !important;
+}
+
+.image-gallery-thumbnails-container {
+  display: flex;
+  gap: 10px;
+  justify-content: space-between;
+}
+
+.image-gallery-thumbnails-container button {
+  border: 1px solid black;
+  border-radius: 5px;
+  padding: 5px;
+}
+
+.image-gallery-thumbnail:hover {
+  outline: none;
+  border: 2px solid #0c4e67 !important;
+}
+
+.image-gallery-thumbnail.active,
+.image-gallery-thumbnail:focus {
+  outline: none;
+  border: 2px solid #0c4e67 !important;
+}
+
+/* pagination css */
+.paginationBttns {
+  width: 100%;
+
+  padding: 6px;
+  list-style: none;
+  justify-content: center;
+  display: flex;
+  gap: 2px;
+}
+.paginationBttns a {
+  padding: 3px 12px;
+  border-radius: 5px;
+  font-size: 20px;
+  /* font-weight: 600; */
+  /* color: white; */
+  /* background-color: rgb(156, 150, 150); */
+  border: 1px solid gray;
+}
+
+.paginationBttns a:hover {
+  background-color: indigo;
+  color: white;
+}
+/* .prevBttn,
+.nextBttn {
+  padding: 3px 12px;
+  border-radius: 5px;
+  font-size: 20px;
+  font-weight: 600;
+  color: white;
+  background-color: rgb(156, 150, 150);
+} */
+.paginationdisabled {
+  /* padding: 3px, 12px;
+  border-radius: 5px;
+  font-size: 20px;
+  font-weight: 600;
+  color: white;
+  border: 2px solid gray; */
+}
+
+.paginationActive a {
+  background-color: indigo;
+  color: white;
+  /* font-weight: 600; */
+  /* border: 2px solid indigo; */
+  /* border-color: indigo; */
+}
+
+.paginationBttn {
+  /* padding: 3px, 12px;
+  border-radius: 5px;
+  font-size: 20px;
+  font-weight: 600;
+  border: 2px solid gray; */
+}
+/* swippper css  */
+.swiper .swiper-button-prev,
+.swiper-button-next {
+  padding: 25px;
+  font-size: 5px;
+  /* background-color: gray; */
+  opacity: 0;
+  visibility: hidden;
+}
+.swiper:hover .swiper-button-prev {
+  color: white;
+  opacity: 1;
+  font-size: 5px !important;
+  visibility: visible;
+}
+.swiper:hover .swiper-button-next {
+  color: white;
+  opacity: 1;
+  font-size: 5px !important;
+  visibility: visible;
+}
+/* swipper end */

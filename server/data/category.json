@@ -1,0 +1,32 @@
+[
+    {
+      "name": "Apple",
+      "description": "Innovative and stylish electronics",
+      "imageUrl": "apple_image_url_here"
+    },
+    {
+      "name": "Samsung",
+      "description": "Wide range of consumer electronics",
+      "imageUrl": "samsung_image_url_here"
+    },
+    {
+      "name": "Sony",
+      "description": "High-quality entertainment and electronics",
+      "imageUrl": "sony_image_url_here"
+    },
+    {
+      "name": "LG",
+      "description": "Home appliances and electronics",
+      "imageUrl": "lg_image_url_here"
+    },
+    {
+      "name": "Microsoft",
+      "description": "Software and hardware technology",
+      "imageUrl": "microsoft_image_url_here"
+    }
+  ]
+  
+  
+  
+  
+  
