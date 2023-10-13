@@ -14,7 +14,7 @@ import UpdateOrder from "../pages/Dashboard/Orders/UpdateOrder";
 import SingleVideoNews from "../Pages/NewsBd/VideosNews/SingleVideoNews/SingleVideoNews";
 import AllVideosNews from "../Pages/NewsBd/VideosNews/AllVideosNews/AllVideosNews";
 import Cart from "../Pages/Cart/Cart";
-import ProductPurchaseSection from "../Pages/Cart/ProuductPurchaseSection/ProudctPurchaseSection";
+// import ProductPurchaseSection from "../Pages/Cart/ProuductPurchaseSection/ProudctPurchaseSection";
 import Dashboard from "../Pages/Dashboard/Dashboard/Dashboard";
 import DashboardDetails from "../Pages/Dashboard/DashboardDetails";
 import Orders from "../Pages/Dashboard/Orders/Orders";
@@ -34,6 +34,8 @@ import SignUp from "../Auth/SignUp/SignUp";
 // import LoginPage from "../Auth/LoginPage/LoginPage";
 // import DemoLogin from "../Auth/DemoLogin/DemoLogin";
 import LoginPage from "../Auth/LoginPage/LoginPage";
+import Checkout from "../Pages/Checkout/Checkout";
+import AdedAdress from "../Pages/AddNewAddress/AdedAdress";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -95,6 +97,10 @@ const router = createBrowserRouter([
         element: <Cart />,
       },
       {
+        path: "/checkout",
+        element: <Checkout />,
+      },
+      {
         path: "/login",
         element: <LoginPage />,
       },
@@ -103,8 +109,8 @@ const router = createBrowserRouter([
         element: <SignUp />,
       },
       {
-        path: "/checkout",
-        element: <ProductPurchaseSection></ProductPurchaseSection>,
+        path: "/adedAddress",
+        element: <AdedAdress></AdedAdress>,
       },
     ],
   },

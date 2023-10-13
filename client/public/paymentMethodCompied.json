@@ -1,0 +1,22 @@
+[
+	{
+		"_id": "1",
+		"paymentMethodName": "Cash On Delivery",
+		"image": "../src/assets/icons/PaymentIcons/img1.png"
+	},
+	{
+		"_id": "2",
+		"paymentMethodName": "Rocket",
+		"image": "../src/assets/icons/PaymentIcons/img4.png"
+	},
+	{
+		"_id": "3",
+		"paymentMethodName": "Nagad",
+		"image": "../src/assets/icons/PaymentIcons/img3.png"
+	},
+	{
+		"_id": "4",
+		"paymentMethodName": "Bkash",
+		"image": "../src/assets/icons/PaymentIcons/img2.png"
+	}
+]
