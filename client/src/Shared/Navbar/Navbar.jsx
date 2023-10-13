@@ -31,10 +31,10 @@ const Navbar = () => {
 			text: 'Contact',
 			href: '/contact',
 		},
-		// {
-		// 	text: 'Dashboard',
-		// 	href: '/dashboard',
-		// },
+		{
+			text: 'Dashboard',
+			href: '/dashboard',
+		},
 	];
 
 	const toggleMenu = () => {

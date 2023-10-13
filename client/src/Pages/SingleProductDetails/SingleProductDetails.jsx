@@ -4,9 +4,14 @@ import image from "../../assets/Home/book1.png";
 import ImageGallery from "react-image-gallery";
 import "react-image-gallery/styles/css/image-gallery.css";
 import { Icon } from "@iconify/react";
+import { toast } from "react-hot-toast";
 import { productss } from "../../api/products";
+import { addToCart } from "../../store/slices/CartSlices";
+import { useDispatch } from "react-redux";
 
 const SingleProductDetails = () => {
+  const user = true;
+  const dispatch = useDispatch();
   const { _id } = useParams();
   const [product, setProduct] = useState(); // Initialize products as null
 
@@ -23,6 +28,21 @@ const SingleProductDetails = () => {
   //   const findProduct = products
   //     ? products.find((product) => product._id === id)
   //     : null;
+
+  const notify = () =>
+    toast.success("Your Product Added Successfull", {
+      style: {
+        backgroundColor: "#0C4E67",
+        color: "white",
+      },
+      className: "bg-black",
+    });
+  const handleAddToCart = (item) => {
+    dispatch(addToCart(item));
+    if (user) {
+      notify();
+    }
+  };
 
   const images = [
     {
@@ -83,12 +103,20 @@ const SingleProductDetails = () => {
                     <div className="space-y-4">
                       <p className="py-5">{product.description}</p>
                       <div className="flex gap-5">
-                        <button className="border-black border lg:px-8 px-4 lg:py-0 md:py-0 py-4 lg:w-full md:w-auto w-full text-xl font-semibold">
+                        <button
+                          onClick={() => {
+                            handleAddToCart(product);
+                          }}
+                          className="border-black border lg:px-8 px-4 lg:py-0 md:py-0 py-3 lg:w-auto md:w-auto w-full text-xl font-semibold"
+                        >
                           Add to Cart
                         </button>
                       </div>
                       <div>
-                        <Link to="">
+                        <Link
+                          to="/cart"
+                          onClick={() => handleAddToCart(product)}
+                        >
                           <button className="border-black border w-full px-8 text-xl font-semibold py-3 bg-[#0C4E67] text-white">
                             Purchase
                           </button>

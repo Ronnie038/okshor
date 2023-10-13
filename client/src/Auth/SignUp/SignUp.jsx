@@ -47,10 +47,10 @@ const SignUp = () => {
         <div className="">
           <div className="">
             <div className=" flex-col lg:flex-row-reverse">
-              <div className="xl:max-w-full lg:max-w-3xl md:max-w-2xl max-w-sm flex-shrink-0 rounded-md shadow-md bg-white mx-1 md:mx-0 lg:mx-0 xl:mx-0 ">
+              <div className="xl:max-w-3xl lg:max-w-2xl md:max-w-xl max-w-sm flex-shrink-0 rounded-md shadow-md bg-white mx-auto ">
                 <form
                   onSubmit={handleSubmit(onSubmit)}
-                  className="w-[50%] mx-auto lg:px-28 md:px-28 px-[16px] space-y-5 py-16"
+                  className=" lg:px-28 md:px-28 px-[16px] space-y-5 py-16"
                 >
                   <div>
                     <p>Welcome to</p>
@@ -206,8 +206,8 @@ const SignUp = () => {
                     </div>
                   </div>
                   <div className="flex flex-wrap gap-5 justify-between  my-8">
-                    <Link className="btn bg-transparent rounded-none w-full lg:w-auto border border-black">
-                      <div className="flex items-center gap-2 p-3">
+                    <Link className="btn bg-transparent rounded-none w-full lg:w-auto border border-black mx-auto">
+                      <div className="flex items-center justify-center gap-2 p-3 mx-auto">
                         <Icon
                           icon="entypo-social:google"
                           className="text-white bg-red-600 rounded-full p-2 text-3xl"
@@ -215,8 +215,8 @@ const SignUp = () => {
                         <span className="normal-case">Sing Up with Google</span>
                       </div>
                     </Link>
-                    <Link className="btn bg-transparent border-1 rounded-none w-full lg:w-auto border border-black">
-                      <div className="flex items-center gap-2 p-3">
+                    <Link className="btn bg-transparent border-1 rounded-none w-full lg:w-auto border border-black mx-auto">
+                      <div className="flex items-center justify-center gap-2 p-3 ">
                         <Icon
                           icon="ic:baseline-facebook"
                           className="text-3xl text-[#1877F2]"

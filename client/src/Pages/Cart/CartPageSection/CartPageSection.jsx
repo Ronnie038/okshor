@@ -1,32 +1,38 @@
 import React, { useEffect, useState } from "react";
 import { Icon } from "@iconify/react";
-import CartImg from "../../../assets/shop/shopImage1.jpg";
+// import CartImg from "../../assets/WomanNewItems/img2.png";
 // import Rating from "react-rating";
-// import ProductCouter from "../ProductCouter/ProductCouter";
+// import ProductCouter from "../Counter/ProductCounter";
 import { Link } from "react-router-dom";
 import { Fade } from "react-awesome-reveal";
 import { toast } from "react-hot-toast";
-import ProductCouter from "../ProductCouter/ProductCouter";
+import { useDispatch, useSelector } from "react-redux";
+
+import AddedCartProducts from "./AddedCartProducts.jsx";
+import { removeAll } from "../../../store/slices/CartSlices";
 
 const CartPageSection = () => {
-  const user = true;
-
-  const [quantity, setQuantity] = useState(1);
+  const dispatch = useDispatch();
   const [price, setPrice] = useState(null);
+  const [productIsCheck, setProductIsCheck] = useState(false);
+  const userData = useSelector((state) => state.user);
+  const { user, status, error } = userData;
+  const {
+    cart: products,
+    total,
+    subTotal,
+  } = useSelector((state) => {
+    return state.cartItems;
+  });
 
-  let priceItems = 200;
-  useEffect(() => {
-    setPrice(quantity * priceItems);
-  }, [quantity]);
-
-  // toastify
+  // console.log(quantity);
   const notify = () =>
     toast.success("Your Selected Item Deleted Successfull", {
       style: {
         backgroundColor: "#0C4E67",
         color: "white",
       },
-      className: "bg-black",
+      className: "bg-red-600",
     });
   const handleDelete = () => {
     if (user) {
@@ -34,113 +40,144 @@ const CartPageSection = () => {
     }
   };
 
+  const handleProductChecked = () => {
+    setProductIsCheck(!productIsCheck);
+  };
+
+  const handleAllDelete = () => {
+    if (!productIsCheck) return;
+
+    dispatch(removeAll());
+    setProductIsCheck(!productIsCheck);
+    notify();
+  };
+
   return (
     <>
       <Fade>
-        <div className="mx-auto w-10/12">
-          <div className="container mx-auto my-20">
-            <div className="grid grid-rows-3 lg:grid-flow-col gap-8 xl:mx-0 lg:mx-5 md:mx-5">
-              <div className="lg:col-span-2 md:col-span-2 border p-5">
-                <div className="flex items-center justify-between">
-                  <div className="flex items-center gap-5 cursor-pointer">
-                    <input
-                      type="checkbox"
-                      htmlFor="selectAll"
-                      className="text-xlappearance-none indeterminate:bg-gray-300 rounded-lg border-4 border-black w-8 h-8"
-                    />
-                    <span id="selectAll" className=" text-2xl font-semibold">
-                      Select all
-                    </span>
-                  </div>
-                  <div>
-                    <Icon
-                      onClick={handleDelete}
-                      icon="fluent-mdl2:delete"
-                      className="text-3xl cursor-pointer text-red-600"
-                    />
-                  </div>
-                </div>
+        <div className="mx-5">
+          <div className="w-10/12 mx-auto my-20">
+            {/* all select  */}
+            <div className="border p-5 flex justify-between">
+              <div className="flex items-center gap-5 ">
+                <input
+                  onClick={() => handleProductChecked()}
+                  checked={productIsCheck ? true : false}
+                  type="checkbox"
+                  id="selectAll"
+                  className="cursor-pointer text-xlappearance-none indeterminate:bg-gray-300 rounded-lg border-4 border-black w-8 h-8"
+                />
+                <label
+                  htmlFor="selectAll"
+                  className="cursor-pointer text-2xl font-semibold"
+                >
+                  {productIsCheck ? "Not Seletct" : "Select all"}
+                </label>
               </div>
-              <div className="row-span-2 lg:col-span-2 md:col-span-2 col-span-1 border">
-                <div className="flex md:flex-wrap flex-wrap justify-between flex-row items-center gap-10 p-5">
-                  <div className="flex items-center gap-5">
-                    <div className="flex items-center gap-5 cursor-pointer">
-                      <input
-                        type="checkbox"
-                        htmlFor="selectOne"
-                        className="text-xlappearance-none indeterminate:bg-gray-300 rounded-lg border-4 border-black w-8 h-8"
-                      />
-                    </div>
-                    <div className="w-48 p-3">
-                      <img className="w-full" src={CartImg} alt="" />
-                    </div>
-                    <div className="space-y-3">
-                      <h2 className="text-3xl font-semibold">
-                        Nike Air Force 1
-                      </h2>
-                      <p>Fitted Long Strappy Shoes</p>
-                    </div>
-                  </div>
-                  <div className="flex justify-center items-center lg:w-auto md:w-48 ">
-                    <div>
-                      <h2 className="text-5xl font-bold text-center mb-8">
-                        {priceItems}$
-                      </h2>
-                      <ProductCouter
-                        quantity={quantity}
-                        setQuantity={setQuantity}
-                      ></ProductCouter>
-                    </div>
-                  </div>
-                  <div className="md:ml-auto">
-                    <button onClick={handleDelete}>
-                      <Icon
-                        icon="fluent-mdl2:delete"
-                        className="text-3xl text-red-600"
-                      />
-                    </button>
-                  </div>
-                </div>
-              </div>
-              <div className="row-span-3 col-span-1 border">
-                <h3 className="text-2xl text-center font-bold py-4">Summery</h3>
-                <div className="divider m-0"></div>
-                <ul>
-                  <li className="flex justify-between py-2 px-6">
-                    <span className="text-xl font-medium">Sub Total</span>
-                    <span className="text-xl font-medium">00.00$</span>
-                  </li>
-                  <div className="divider m-0"></div>
-                  <li className="flex justify-between py-2 px-6">
-                    <span className="text-xl font-medium">Vat</span>
-                    <span className="text-xl font-medium">00.00$</span>
-                  </li>
-                  <div className="divider m-0"></div>
-                  <li className="flex justify-between py-2 px-6">
-                    <span className="text-xl font-medium">Delivery Charge</span>
-                    <span className="text-xl font-medium">00.00$</span>
-                  </li>
-                  <div className="divider m-0"></div>
-                  <li className="flex justify-between py-2 px-6">
-                    <span className="text-xl font-bold">Total</span>
-                    <span className="text-xl font-bold">{price}$</span>
-                  </li>
-                </ul>
+              <div
+                onClick={() => handleAllDelete()}
+                title="Delete"
+                className="cursor-pointer"
+              >
+                <Icon
+                  className={`text-3xl text-red-600 ${
+                    !productIsCheck && "cursor-not-allowed opacity-50"
+                  }`}
+                  icon="fluent-mdl2:delete"
+                />
               </div>
             </div>
+            {/*  select product  */}
+            {products?.map((item, index) => (
+              <AddedCartProducts
+                key={item._id}
+                item={item}
+                productIsCheck={productIsCheck}
+              />
+            ))}
+
+            {/* summery  */}
+            <div className="mt-16">
+              <table className="border w-full">
+                <tr>
+                  <th className="p-5 text-2xl" colSpan={2}>
+                    Summary
+                  </th>
+                </tr>
+                <tbody>
+                  <tr>
+                    <td className="border p-5 text-lg font-semibold">
+                      Sub Total
+                    </td>
+                    <td className="border p-5 text-lg font-semibold text-end">
+                      {subTotal.toFixed(2)}৳
+                    </td>
+                  </tr>
+                  <tr>
+                    <td className="border p-5 text-lg font-semibold">
+                      Quantity
+                    </td>
+                    <td className="border p-5 text-lg font-semibold text-end">
+                      {products.length}
+                    </td>
+                  </tr>
+                  <tr>
+                    <td className="border p-5 text-lg font-semibold">Vat 5%</td>
+                    <td className="border p-5 text-lg font-semibold text-end">
+                      {subTotal * 0.05}৳
+                    </td>
+                  </tr>
+                  <tr>
+                    <td className="border p-5 text-lg font-semibold">
+                      Delivery Charge
+                    </td>
+                    <td className="border p-5 text-lg font-semibold text-end">
+                      {100}৳
+                    </td>
+                  </tr>
+                  <tr>
+                    <td className="border p-5 text-lg font-semibold">Total</td>
+                    <td className="border p-5 text-lg font-semibold text-end">
+                      {products.length > 0 ? total.toFixed(2) : 0}৳
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
             <div className="flex justify-center gap-5 mt-20">
               <Link
                 to="/women"
-                className=" rounded-none  text-xl bg-transparent border-2 hover:border-[#3B95B0] hover:text-[#3B95B0] hover:bg-transparent border-black p-2"
+                className="p-3 text-center rounded-none lg:w-52 h-14 text-xl bg-transparent border-2 hover:border-[#3B95B0] hover:text-[#3B95B0] hover:bg-transparent border-black normal-case"
               >
                 Return Shop
               </Link>
-              <Link
-                to="/checkout"
-                className=" rounded-none  text-xl border-0 bg-[#0C4E67] hover:bg-[#3B95B0] text-white p-2"
-              >
-                Check Out
-              </Link>
+              {products?.length > 0 && user._id ? (
+                <Link
+                  to="/checkOut"
+                  className="btn rounded-none lg:w-52 h-14 text-xl border-0 bg-[#0C4E67] hover:bg-[#3B95B0] text-white normal-case"
+                >
+                  Check Out
+                </Link>
+              ) : (
+                <div>
+                  {!user._id ? (
+                    <>
+                      <p className="-mt-5">Please Login to proceed further</p>
+                      <Link to="/login" className="btn bg-red-400 text-white">
+                        Login
+                      </Link>
+                    </>
+                  ) : (
+                    <button
+                      className="btn rounded-none lg:w-52 h-14 text-xl border-0 bg-[#0C4E67] bg-opacity-50 cursor-not-allowed hover:bg-[#3B95B0] text-white normal-case"
+                      disabled
+                    >
+                      Check Out
+                    </button>
+                  )}
+                </div>
+              )}
             </div>
           </div>
         </div>
