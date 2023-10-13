@@ -110,7 +110,7 @@ const Navbar = () => {
 											/>
 										) : (
 											<Icon
-												className=' z-50 h-full w-full'
+												className=' z-50 h-6 mt-2 w-full'
 												icon='zondicons:user'
 											/>
 										)}
