@@ -93,7 +93,7 @@ const AllNews = () => {
 									<p className='text-justify leading-7 text-sm'>
 										{news.description?.slice(0, 220) + '... '}
 										<Link
-											to={`/${encodeURIComponent(
+											to={`/খবর/${encodeURIComponent(
 												news.title.split(' ').join('-')
 											)}/${news._id}`}
 											className=' items-center font-semibold text-[#1F2659] hover:opacity-90 text-[15px]'

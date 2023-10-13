@@ -48,7 +48,7 @@ const News = ({ category }) => {
 					<p className='text-[15px] text-gray-500'>
 						{news[0]?.description.slice(0, 200) + '...'}
 						<Link
-							to={`/${encodeURIComponent(
+							to={`/খবর/${encodeURIComponent(
 								news[0]?.title.split(' ').join('-')
 							)}/${news[0]?._id}`}
 						>
@@ -69,7 +69,7 @@ const News = ({ category }) => {
 					<div className='grid grid-cols-2 gap-3'>
 						{news?.slice(0, 4).map((singleNews, idx) => (
 							<Link
-								to={`/${encodeURIComponent(
+								to={`/খবর/${encodeURIComponent(
 									singleNews.title.split(' ').join('-')
 								)}/${singleNews._id}`}
 								key={idx}
