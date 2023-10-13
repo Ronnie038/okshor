@@ -8,7 +8,7 @@ exports.getNewsService = async (req) => {
 	// if (!category == 'undefined') {
 	query.category = category;
 	// }
-	console.log(queryData);
+	// console.log(queryData);
 	const news = await News.find(query);
 
 	return news;
