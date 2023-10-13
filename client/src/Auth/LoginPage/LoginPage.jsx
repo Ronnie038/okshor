@@ -7,7 +7,7 @@ import { useForm } from "react-hook-form";
 import { Fade } from "react-awesome-reveal";
 import { facebookLogin, googleLogin, signIn } from "../../api/auth";
 import { useDispatch } from "react-redux";
-
+import logo from "../../assets/Home/logo.png";
 import Loading from "../../Components/Loading/Loading";
 import toast from "react-hot-toast";
 import { addUser } from "../../store/slices/UserSlices";
@@ -63,7 +63,7 @@ const LoginPage = () => {
         <Helmet>
           <title>UrbanUtopia | Login</title>
         </Helmet>
-        <div className="bg-[#C8C2BF] py-20">
+        <div className=" ">
           <div className="h">
             <div className=" flex-col lg:flex-row-reverse">
               <div className="xl:max-w-full lg:max-w-3xl md:max-w-2xl max-w-sm flex-shrink-0 rounded-md shadow-md bg-white mx-1 md:mx-0 lg:mx-0 xl:mx-0 ">
@@ -74,10 +74,7 @@ const LoginPage = () => {
                   <div>
                     <p>Welcome to</p>
                     <Link to="/" className="">
-                      <p className="logoFont mb-8 mt-3 text-[#03384D] lg:text-5xl text-3xl font-bold">
-                        <span className="text-[#3B95B0] logoFont">Urban</span>
-                        Utopia
-                      </p>
+                      <img src={logo} alt="" className="mt-3 w-[30%]" />
                     </Link>
                   </div>
 
@@ -146,14 +143,14 @@ const LoginPage = () => {
                     </div>
                   </div>
                   <div className="flex flex-wrap gap-5 justify-between  my-8">
-                    <Link className="btn bg-transparent rounded-none w-full lg:w-auto border border-black">
+                    <Link className=" p-2 rounded-none w-full lg:w-auto border border-black">
                       <div
                         onClick={() => googleLogin()}
-                        className="flex items-center gap-2"
+                        className="flex items-center gap-2 p-1"
                       >
                         <Icon
                           icon="entypo-social:google"
-                          className="text-white bg-red-600 rounded-full p-2 text-3xl"
+                          className="text-white bg-red-600 rounded-full p-1 text-3xl"
                         />
                         <span className="normal-case">Log in with Google</span>
                       </div>
@@ -161,7 +158,7 @@ const LoginPage = () => {
                     <Link className="btn bg-transparent border-1 rounded-none w-full lg:w-auto border border-black">
                       <div
                         onClick={() => facebookLogin()}
-                        className="flex items-center gap-2"
+                        className="flex items-center justify-center gap-2 p-2"
                       >
                         <Icon
                           icon="ic:baseline-facebook"

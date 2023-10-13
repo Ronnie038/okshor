@@ -8,6 +8,7 @@ import Swal from "sweetalert2";
 import { Fade } from "react-awesome-reveal";
 import { userRegister } from "../../api/auth";
 // import toast from "react-hot-toast";
+import logo from "../../assets/Home/logo.png";
 import Loading from "../../Components/Loading/Loading";
 
 const SignUp = () => {
@@ -43,21 +44,18 @@ const SignUp = () => {
         <Helmet>
           <title>UrbanUtopia | SignUp</title>
         </Helmet>
-        <div className="bg-[#C8C2BF] py-20">
-          <div className="hero">
+        <div className="">
+          <div className="">
             <div className=" flex-col lg:flex-row-reverse">
               <div className="xl:max-w-full lg:max-w-3xl md:max-w-2xl max-w-sm flex-shrink-0 rounded-md shadow-md bg-white mx-1 md:mx-0 lg:mx-0 xl:mx-0 ">
                 <form
                   onSubmit={handleSubmit(onSubmit)}
-                  className="card-body lg:px-28 md:px-28 px-[16px] space-y-5 py-16"
+                  className="w-[50%] mx-auto lg:px-28 md:px-28 px-[16px] space-y-5 py-16"
                 >
                   <div>
                     <p>Welcome to</p>
                     <Link to="/" className="">
-                      <p className="logoFont mb-8 mt-3 text-[#03384D] lg:text-5xl text-3xl font-bold">
-                        <span className="text-[#3B95B0] logoFont">Urban</span>
-                        Utopia
-                      </p>
+                      <img src={logo} alt="" className="mt-3 w-[30%]" />
                     </Link>
                   </div>
                   <div className="form-control">
@@ -65,7 +63,7 @@ const SignUp = () => {
                       type="name"
                       {...register("name", { required: true })}
                       placeholder="Name*"
-                      className="input placeholder-black input-bordered h-16 rounded-none border-black text-black text-xl"
+                      className="input placeholder-black input-bordered h-16 rounded-none w-full border p-2 border-black text-black text-xl"
                     />
                     {errors.name && (
                       <p className="mt-2 text-red-600">
@@ -78,7 +76,7 @@ const SignUp = () => {
                       type="text"
                       {...register("phone", { required: true })}
                       placeholder="Mobile Number*"
-                      className="input placeholder-black input-bordered h-16 rounded-none border-black text-black text-xl"
+                      className="input placeholder-black input-bordered h-16 rounded-none w-full border p-2 border-black text-black text-xl"
                     />
                     {errors.mobile && (
                       <p className="mt-2 text-red-600">
@@ -91,7 +89,7 @@ const SignUp = () => {
                       type="email"
                       {...register("email", { required: true })}
                       placeholder="Email*"
-                      className="input placeholder-black input-bordered h-16 rounded-none border-black text-black text-xl"
+                      className="input placeholder-black input-bordered h-16 rounded-none w-full border p-2 border-black text-black text-xl"
                     />
                     {errors.email && (
                       <p className="mt-2 text-red-600">
@@ -108,7 +106,7 @@ const SignUp = () => {
                         // pattern: /(?=.*[A-Z])(?=.*[!@#$&*])(?=.*[0-9])(?=.*[a-z])/,
                       })}
                       placeholder="Password"
-                      className="placeholder-black input h-16 rounded-none input-bordered border-black text-black text-xl placeholder-dots"
+                      className="placeholder-black input h-16 rounded-none input-bordered w-full border p-2 border-black text-black text-xl placeholder-dots"
                     />
                     {open ? (
                       <div className="absolute right-5 top-5 cursor-pointer">
@@ -161,7 +159,7 @@ const SignUp = () => {
                       type={open ? "text" : "password"}
                       {...register("confirmPassword")}
                       placeholder="Confirm Password"
-                      className="placeholder-black input h-16 rounded-none input-bordered border-black text-black text-xl"
+                      className="placeholder-black input h-16 rounded-none input-bordered w-full border p-2 border-black text-black text-xl"
                     />
                     {open ? (
                       <div className="absolute right-5 top-5 cursor-pointer">
@@ -191,7 +189,7 @@ const SignUp = () => {
                     <button
                       disabled={loading}
                       type="submit"
-                      className="btn bg-[#0C4E67] text-white mt-4 normal-case text-[16px] h-16 rounded-none hover:bg-[#3B95B0]"
+                      className="btn bg-[#0C4E67] w-full border p-2 text-white mt-3 normal-case text-[16px] h-16 rounded-none hover:bg-[#3B95B0]"
                     >
                       {loading ? <Loading /> : "Sign Up"}
                     </button>
@@ -209,7 +207,7 @@ const SignUp = () => {
                   </div>
                   <div className="flex flex-wrap gap-5 justify-between  my-8">
                     <Link className="btn bg-transparent rounded-none w-full lg:w-auto border border-black">
-                      <div className="flex items-center gap-2">
+                      <div className="flex items-center gap-2 p-3">
                         <Icon
                           icon="entypo-social:google"
                           className="text-white bg-red-600 rounded-full p-2 text-3xl"
@@ -218,7 +216,7 @@ const SignUp = () => {
                       </div>
                     </Link>
                     <Link className="btn bg-transparent border-1 rounded-none w-full lg:w-auto border border-black">
-                      <div className="flex items-center gap-2">
+                      <div className="flex items-center gap-2 p-3">
                         <Icon
                           icon="ic:baseline-facebook"
                           className="text-3xl text-[#1877F2]"
