@@ -14,7 +14,7 @@ app.use('/images', express.static('images'));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(cookieParser());
-app.use(cors());
+// app.use(cors());
 
 app.use(
 	session({
@@ -32,8 +32,8 @@ app.use(
 	})
 );
 
-// app.use(passport.initialize());
-// app.use(passport.session());
+app.use(passport.initialize());
+app.use(passport.session());
 
 // let allowedOrigins = [];
 
@@ -45,13 +45,13 @@ app.use(
 // 	// allowedOrigins = ["https://it-product-client.netlify.app"];
 // }
 
-// app.use(
-// 	cors({
-// 		origin: ['http://localhost:5173'],
-// 		methods: 'GET,POST,PUT,DELETE',
-// 		credentials: true,
-// 	})
-// );
+app.use(
+	cors({
+		origin: ['http://localhost:5173'],
+		methods: 'GET,POST,PUT,DELETE',
+		credentials: true,
+	})
+);
 
 // Routes
 const userRoute = require('./routes/user.route');
