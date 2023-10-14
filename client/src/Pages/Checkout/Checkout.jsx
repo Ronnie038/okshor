@@ -118,7 +118,9 @@ const Checkout = () => {
                   {products.map((item, index) => (
                     <>
                       <tr className="border">
-                        <td className="py-5 px-3 font-semibold">{item.name}</td>
+                        <td className="py-5 px-3 font-semibold">
+                          {item.title}
+                        </td>
                         <td className="py-5 px-3 font-semibold">
                           {item.price}৳
                         </td>

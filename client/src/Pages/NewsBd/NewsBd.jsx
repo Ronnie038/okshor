@@ -1,78 +1,70 @@
-import News from '../../Components/News/News';
-import VideosNews from './VideosNews/VideosNews';
-import { Icon } from '@iconify/react';
-import { Link } from 'react-router-dom';
-import productImage from '../../assets/Home/book1.png';
+import News from "../../Components/News/News";
+import VideosNews from "./VideosNews/VideosNews";
+import { Icon } from "@iconify/react";
+import { Link } from "react-router-dom";
+import productImage from "../../assets/Home/book1.png";
 
-const categoryData = ['job', 'bangledesh', 'world'];
+const categoryData = ["job", "bangledesh", "world"];
 const NewsBd = () => {
-	return (
-		<div>
-			<div className='flex gap-4 w-10/12 mx-auto'>
-				<div className='w-[80%]'>
-					<div>
-						{/* {jobNewses && (
+  return (
+    <div>
+      <div className="flex flex-col md:flex-row md:gap-4 w-10/12 md:w-[88%] lg:w-10/12 mx-auto ">
+        <div className="w-full md:w-[83%]  md:order-1 order-2">
+          <div>
+            {/* {jobNewses && (
 							<div>
 								<News news={jobNewses}></News>
 							</div>
 						)} */}
-					</div>
-					<div>
-						{categoryData.map((cate) => (
-							<News key={cate} category={cate}></News>
-						))}
-					</div>
-					{/* <div>
-						{Object.keys(categories).map((category) => (
-							<div key={category}>
-								<News news={categories[category]}></News>
-							</div>
-						))}
-					</div> */}
-					<div>
-						<VideosNews category={'video'}></VideosNews>
-					</div>
-				</div>
-				<div className='w-[20%]'>
-					<div className='sticky top-3'>
-						<p className='text-indigo-900 font-bold mb-2 uppercase'>
-							Newest :{' '}
-						</p>
-						<Link to='/shop'>
-							{' '}
-							<div>
-								<div className='relative product flex flex-col justify-between cursor-pointer lg:border p-3 rounded-md h-[360px] '>
-									<div className='p-1 transition-all duration-300 '>
-										<img
-											src={productImage}
-											className='w-full h-auto object-contain max-w-full max-h-60 hover:text-white productImg transition-all duration-300 '
-											alt='Book 1'
-										/>
-									</div>
-									<h3 className='text-sm font-semibold mt-3 '>product1</h3>
+          </div>
+          <div>
+            {categoryData.map((cate) => (
+              <News key={cate} category={cate}></News>
+            ))}
+          </div>
 
-									<div className='flex justify-between items-center gap-5 my-4 '>
-										<div className='flex gap-3 items-center text-gray-500 '>
-											<p className=' text-[15px] line-through'>25৳</p>
-											<span className='text-[18px]'>30৳</span>
-										</div>
-										{/* <button className="product_btn hover:bg-secondary font-semibold  border border-black hover:border-primary text-black mt-5 rounded-md py-2 px-5 transition-all duration-300 ease-in-out">
-            Add to Cart
-          </button> */}
-										<button className='md:px-3 px-1 py-1 md:py-2 border bg-indigo-900 hover:bg-red-600 font-semibold md:text-[10px] text-[9px] text-white transition-all duration-300 rounded-md'>
-											Add to Cart
-										</button>
-									</div>
-									<div className='flex productCart gap-5 flex-col absolute right-0 top-28'>
-										<Link to=''>
-											<Icon
-												icon='basil:shopping-cart-solid'
-												className=' text-3xl hover:bg-secondary transition-all duration-300 border border-white border-r-0 hover:border-secondary text-white pl-2 pr-5 py-2 w-full h-full rounded-l-xl'
-											/>
-										</Link>
-									</div>
-								</div>
-								{/* <div className="border w-[300px] singleItem relative ">
+          <div>
+            <VideosNews category={"video"}></VideosNews>
+          </div>
+        </div>
+        <div className="w-11/12 mx-auto md:w-[17%] order-1 md:order-2">
+          <div className="sticky top-3">
+            <p className="text-indigo-900 font-bold mb-2 uppercase">
+              Newest :{" "}
+            </p>
+            <Link to="/shop">
+              {" "}
+              <div>
+                <div className="relative product flex flex-col justify-between cursor-pointer lg:border p-3 rounded-md h-[360px] ">
+                  <div className="p-1 transition-all duration-300 ">
+                    <img
+                      src={productImage}
+                      className="w-full h-auto object-contain max-w-full max-h-60 hover:text-white productImg transition-all duration-300 "
+                      alt="Book 1"
+                    />
+                  </div>
+                  <h3 className="text-sm font-semibold mt-3 ">product1</h3>
+
+                  <div className="flex justify-between items-center gap-5 my-4 ">
+                    <div className="flex gap-3 items-center text-gray-500 ">
+                      <p className=" text-[15px] line-through">25৳</p>
+                      <span className="text-[18px]">30৳</span>
+                    </div>
+
+                    <button className="md:px-3 px-1 py-1 md:py-2 border bg-indigo-900 hover:bg-red-600 font-semibold md:text-[10px] text-[9px] text-white transition-all duration-300 rounded-md">
+                      Add to Cart
+                    </button>
+                  </div>
+                  <div className="flex productCart gap-5 flex-col absolute right-0 top-28">
+                    <Link to="">
+                      <Icon
+                        icon="basil:shopping-cart-solid"
+                        className=" text-3xl hover:bg-secondary transition-all duration-300 border border-white border-r-0 hover:border-secondary text-white pl-2 pr-5 py-2 w-full h-full rounded-l-xl"
+                      />
+                    </Link>
+                  </div>
+                </div>
+                {/* <div className="border w-[300px] singleItem relative ">
       <div className=" p-1">
         <div className=" relative h-[350px]">
           <img src={image} className="h-full w-full object-contain" alt="" />
@@ -121,13 +113,13 @@ const NewsBd = () => {
         </button>
       </div>
     </div> */}
-							</div>
-						</Link>
-					</div>
-				</div>
-			</div>
-		</div>
-	);
+              </div>
+            </Link>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
 };
 
 export default NewsBd;

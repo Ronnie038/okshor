@@ -2,10 +2,18 @@ import React, { useState } from "react";
 import logo from "../../assets/Home/logo.png";
 import { Link, NavLink } from "react-router-dom";
 import { Icon } from "@iconify/react";
-
+import { useSelector } from "react-redux";
+import { logOut } from "../../api/auth";
 const Navbar = () => {
   const [isMenuOpen, setMenuOpen] = useState(false);
+  // const user = true;
+  const userData = useSelector((state) => state.user);
+  const { user, status, error } = userData;
 
+  // const [cartLength, setCartLength] = useState();
+  const cartLength = useSelector((state) => {
+    return state?.cartItems.cart.length;
+  });
   const Links = [
     {
       text: "Home",
@@ -27,14 +35,6 @@ const Navbar = () => {
       text: "Contact",
       href: "/contact",
     },
-    {
-      text: "Dashboard",
-      href: "/dashboard",
-    },
-    {
-      text: "Checkout",
-      href: "/checkout",
-    },
   ];
 
   const toggleMenu = () => {
@@ -42,13 +42,13 @@ const Navbar = () => {
   };
 
   return (
-    <div className="w-10/12 mx-auto">
-      <nav className="flex  items-center lg:justify-between md:justify-between justify-around my-4">
+    <div className="">
+      <nav className="w-10/12 mx-auto flex  items-center lg:justify-between md:justify-between justify-around my-4 ">
         <Link to="/">
           <img src={logo} alt="okshar logo" className="w-[80px]" />
         </Link>
         <div className="lg:block hidden">
-          <ul className="lg:flex lg:flex-row space-x-10 lg:gap-0 p-4">
+          <ul className="lg:flex lg:flex-row  lg:gap-0 p-4">
             {Links?.map((link, index) => (
               <li
                 key={index}
@@ -82,17 +82,66 @@ const Navbar = () => {
             ))}
           </ul>
         </div>
+        <div className="flex items-center lg:gap-5 justify-center gap-3">
+          {/* <div className='form-control relative lg:w-80 md:w-60 w-full'>
+							<input
+								type='text'
+								placeholder='Search Products'
+								className=' input input-bordered rounded-full border-black w-full h-10 md:w-auto'
+							/>
+							<div className='absolute top-2 lg:right-5 md:right-5 right-2 '>
+								<Icon className='text-2xl' icon='circum:search' />
+							</div>
+						</div> */}
+          {user._id && user.isAdmin && user.role === "admin" && (
+            <div className="bg-[#3B95B0] p-2 rounded-md text-white">
+              <Link to="/dashboard">Dashboard</Link>
+            </div>
+          )}
+          <div>
+            {user._id ? (
+              <>
+                <Link to="/userProfile" className="">
+                  <div className="rounded-full h-10 w-10 overflow-hidden">
+                    {user?.image ? (
+                      <img
+                        src={user?.image}
+                        alt=""
+                        className="object-contain object-center rounded-full"
+                      />
+                    ) : (
+                      <Icon
+                        className=" z-50 h-full w-full"
+                        icon="zondicons:user"
+                      />
+                    )}
+                  </div>
+                </Link>
+              </>
+            ) : (
+              <Link
+                to="/login"
+                className="border rounded-full lg:w-[122px] hover:bg-[#03384D] hover:text-white transition duration-300 ease-in-out font-medium md:w-20 text-xl md:h-10 lg:h-10 bg-transparent px-5 py-1 border-black"
+              >
+                login
+              </Link>
+            )}
+          </div>
 
-        <div className="flex gap-3 items-center menu">
-          <NavLink to="/login" className="">
-            <Icon icon="mdi:user" className="text-3xl" />
-          </NavLink>
-          <NavLink
-            to="/cart"
-            className="flex justify-center items-center gap-2"
-          >
-            <Icon icon="fluent:cart-16-regular" className="text-3xl" />
-          </NavLink>
+          <div className="md:w-9 relative hover:scale-110">
+            <Link to="/cart">
+              <Icon className="w-full text-3xl" icon="fluent:cart-16-regular" />
+            </Link>
+            <div className="badge bg-[#3B95B0] border-2 gap-2 absolute -top-0 -right-4 text-white">
+              {cartLength}
+            </div>
+            {/* <div className="badge badge-primary absolute -top-0 -right-8">+99</div> */}
+          </div>
+          {user._id && (
+            <div onClick={logOut} className="btn btn-sm">
+              Logout
+            </div>
+          )}
           <button
             onClick={toggleMenu}
             className="text-[18px] hover:text-sky-400 lg:hidden"
@@ -103,6 +152,19 @@ const Navbar = () => {
             />
           </button>
         </div>
+
+        {/* <div className="flex gap-3 items-center ">
+          <NavLink to="/login" className="">
+            <Icon icon="mdi:user" className="text-3xl" />
+          </NavLink>
+          <NavLink
+            to="/cart"
+            className="flex justify-center items-center gap-2"
+          >
+            <Icon icon="fluent:cart-16-regular" className="text-3xl" />
+          </NavLink>
+         
+        </div> */}
       </nav>
     </div>
   );
