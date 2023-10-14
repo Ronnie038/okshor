@@ -1,6 +1,5 @@
-import React, { useEffect, useState } from 'react';
-import Chart from './Charts/Chart';
-import ReChart from './Charts/ReChart';
+import { useEffect, useState } from 'react';
+
 const apiBaseUrl = import.meta.env.VITE_REACT_APP_API_URL;
 const DashboardDetails = () => {
 	const [orders, setorders] = useState([]);
@@ -36,11 +35,11 @@ const DashboardDetails = () => {
 			<div className='flex md:flex-nowrap flex-wrap justify-between gap-5'>
 				<div className='border text-center border-green-500 rounded-lg w-full py-8 px-5'>
 					<p>Total Products</p>
-					<p className='text-4xl mt-3 font-semibold'>{products.length}</p>
+					<p className='text-4xl mt-3 font-semibold'>{products?.length}</p>
 				</div>
 				<div className='border text-center border-green-500 rounded-lg w-full py-8 px-5'>
 					<p>Total Orders</p>
-					<p className='text-4xl mt-3 font-semibold'>{orders.length}</p>
+					<p className='text-4xl mt-3 font-semibold'>{orders?.length}</p>
 				</div>
 			</div>
 			<div className='flex gap-5 justify-between flex-col xl:flex-row my-10'>

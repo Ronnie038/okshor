@@ -12,6 +12,7 @@ const AddProducts = () => {
 	const [offerPercentage, setOfferPercentage] = useState(0);
 	const [selectedCategoryIndex, setSelectedCategoryIndex] = useState(0);
 	const [selectedSubcategoryIndex, setSelectedSubcategoryIndex] = useState(0);
+	const [newest, setNewest] = useState(false);
 	const [formData, setFormData] = useState({});
 	const [freeDelevary, setFreeDelivery] = useState(false);
 
@@ -26,10 +27,11 @@ const AddProducts = () => {
 		setLoading(true);
 		const newFormData = {
 			...formData,
+
 			offerPrice,
 			offerPercentage,
-			sizes: sizeServices,
-			freeDelevary,
+			discountPrice,
+			newest,
 		};
 
 		const formDataObj = new FormData();
@@ -63,6 +65,7 @@ const AddProducts = () => {
 		const name = e.target.name;
 		const value = e.target.value;
 		setFormData({ ...formData, [name]: value });
+		console.log(formData);
 	};
 
 	const handleImageChange = (e) => {
@@ -146,7 +149,7 @@ const AddProducts = () => {
 			percentage = (value / regularPrice) * 100;
 
 			// Update offerPercentageInput and totalInput values
-			// offerPercentageInput.value = percentage.toFixed(2);
+			offerPercentageInput.value = Math.round(percentage);
 			totalInput.value = Math.round(newPrice);
 
 			// Set values in the formData object (assuming formData is defined elsewhere)
@@ -166,8 +169,6 @@ const AddProducts = () => {
 			totalInput.value = 0;
 			setOfferPrice(0);
 		}
-
-		// console.log(formData);
 	};
 
 	return (
@@ -178,50 +179,20 @@ const AddProducts = () => {
 					<div className='w-full'>
 						<div className='w-full'>
 							<label className='font-semibold cursor-pointer' htmlFor='name'>
-								Product Name
+								Product title
 							</label>{' '}
 							<br />
 							<input
 								onChange={handleInput}
 								className='border w-full border-purple-200 mt-3 p-3 '
 								type='text'
-								name='name'
-								placeholder='Core i7 5th gen Leptop'
+								name='title'
+								placeholder='titl here ...'
 								id='name'
 								required={true}
 							/>
 						</div>
-						<div className='flex w-full gap-6 mt-6'>
-							<div className='w-1/2'>
-								<label htmlFor='sku' className='font-semibold cursor-pointer'>
-									Product SKU
-								</label>{' '}
-								<br />
-								<input
-									onChange={handleInput}
-									className='border w-full border-purple-200 p-3 mt-3'
-									type='text'
-									name='sku'
-									placeholder='MEGA-JEWE-177-1'
-									id='sku'
-								/>
-							</div>
-							<div className='w-1/2'>
-								<label htmlFor='stock' className='font-semibold cursor-pointer'>
-									Product Stock
-								</label>{' '}
-								<br />
-								<input
-									min={0}
-									onChange={handleInput}
-									className='border w-full text-center border-purple-200 p-3 mt-3'
-									type='number'
-									name='stock'
-									placeholder='10,000'
-									id='stock'
-								/>
-							</div>
-						</div>
+
 						<div className='flex w-full gap-6 mt-6'>
 							<div className='w-1/2'>
 								<label
@@ -297,6 +268,20 @@ const AddProducts = () => {
 								/>
 							</div>
 						</div>
+						<div className='my-3 '>
+							<label htmlFor='newest' className='cursor-pointer'>
+								New Product
+							</label>
+							<input
+								onChange={(e) => {
+									setNewest(e.target.checked);
+								}}
+								type='checkbox'
+								name='newest'
+								id='newest'
+								className='block p-2'
+							/>
+						</div>
 						{/* <div className='flex w-full gap-6 mt-6'>
 						<div className='w-1/2'>
 							<label className=' font-semibold cursor-pointer'>
@@ -326,7 +311,7 @@ const AddProducts = () => {
 						</div>
 					</div> */}
 
-						<div className='mt-6'>
+						{/* <div className='mt-6'>
 							<label className='font-semibold cursor-pointer'>
 								Mega Offer Name
 							</label>{' '}
@@ -339,7 +324,7 @@ const AddProducts = () => {
 								placeholder='Eid Festival Mega offer   '
 								id=''
 							/>
-						</div>
+						</div> */}
 						<div className='flex w-full gap-6 mt-6'>
 							{/* <div className='w-1/2'>
 								<label
@@ -406,9 +391,40 @@ const AddProducts = () => {
 								</div>
 							))}
 						</div>
+						<div className='flex w-full gap-6 mt-6'>
+							<div className='w-1/2'>
+								<label htmlFor='sku' className='font-semibold cursor-pointer'>
+									Product SKU
+								</label>{' '}
+								<br />
+								<input
+									onChange={handleInput}
+									className='border w-full border-purple-200 p-3 mt-3'
+									type='text'
+									name='sku'
+									placeholder='MEGA-JEWE-177-1'
+									id='sku'
+								/>
+							</div>
+							<div className='w-1/2'>
+								<label htmlFor='stock' className='font-semibold cursor-pointer'>
+									Product Stock
+								</label>{' '}
+								<br />
+								<input
+									min={0}
+									onChange={handleInput}
+									className='border w-full text-center border-purple-200 p-3 mt-3'
+									type='number'
+									name='stock'
+									placeholder='10,000'
+									id='stock'
+								/>
+							</div>
+						</div>
 
 						{/* Image box end */}
-						<div className='w-full mt-6 '>
+						{/* <div className='w-full mt-6 '>
 							<label htmlFor='brand' className=' font-semibold cursor-pointer'>
 								Product Brand{' '}
 							</label>{' '}
@@ -420,12 +436,12 @@ const AddProducts = () => {
 								placeholder='Apex,Bata'
 								id='brand'
 							/>
-						</div>
-						<div className='flex w-full gap-6 mt-6 h-[83px]'>
+						</div> */}
+						{/* <div className='flex w-full gap-6 mt-6 h-[83px]'>
 							<div className='form-group mb-3'>
 								<span className='mb-2 md:text-xl'>Category</span>
-								<br />
-								{/* <select
+								<br /> */}
+						{/* <select
 									autoComplete='off'
 									required
 									onChange={(e) => {
@@ -443,13 +459,13 @@ const AddProducts = () => {
 										</option>
 									))}
 								</select> */}
-							</div>
-							<div className='form-group mb-3'>
-								<span htmlFor='subcategory' className='mb-2 mr-2'>
-									Subcategory
-								</span>
+						{/* </div>
+					<div className='form-group mb-3'>
+						<span htmlFor='subcategory' className='mb-2 mr-2'>
+							Subcategory
+						</span> */}
 
-								{/* <select
+						{/* <select
 									autoComplete='off'
 									onChange={(e) => {
 										handleSubcategoryChange(e);
@@ -470,10 +486,10 @@ const AddProducts = () => {
 										)
 									)}
 								</select> */}
-							</div>
-						</div>
+						{/* </div>
+						</div> */}
 
-						<div className='mt-6 '>
+						{/* <div className='mt-6 '>
 							<div className='flex w-full gap-6 mt-6'>
 								<div className='w-1/2'>
 									<label className=' font-semibold cursor-pointer'>
@@ -502,7 +518,7 @@ const AddProducts = () => {
 									/>
 								</div>
 							</div>
-						</div>
+						</div> */}
 						{/* <div className='mt-6'>
 							<div className='flex gap-8 items-center'>
 								<label className='font-semibold cursor-pointer '>
