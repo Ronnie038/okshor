@@ -144,10 +144,10 @@ const Navbar = () => {
           )}
           <button
             onClick={toggleMenu}
-            className="text-[18px] hover:text-sky-400 lg:hidden"
+            className=" hover:text-sky-400 lg:hidden"
           >
             <Icon
-              className="text-2xl hover:text-[#E52D27] transition-all duration-300 menu"
+              className="text-4xl hover:text-[#E52D27] transition-all duration-300 menu"
               icon={isMenuOpen ? "eva:close-outline" : "eva:menu-outline"}
             />
           </button>
