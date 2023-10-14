@@ -36,6 +36,9 @@ import SignUp from "../Auth/SignUp/SignUp";
 import LoginPage from "../Auth/LoginPage/LoginPage";
 import Checkout from "../Pages/Checkout/Checkout";
 import AdedAdress from "../Pages/AddNewAddress/AdedAdress";
+import UserProfile from "../Pages/UserProfile/UserProfile";
+import OrderDone from "../Pages/OrderDone/OrderDone";
+import OrderDetails from "../Components/OrderDetails/OrderDetails";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -87,7 +90,6 @@ const router = createBrowserRouter([
         path: "/bcs/:category",
         element: <BcsCategory />,
       },
-
       {
         path: "/বই-সমাবেশ",
         element: <PdfBooks />,
@@ -96,6 +98,15 @@ const router = createBrowserRouter([
         path: "/cart",
         element: <Cart />,
       },
+      {
+        path: "userProfile",
+        element: <UserProfile />,
+      },
+      {
+        path: "orderDone",
+        element: <OrderDone />,
+      },
+
       {
         path: "/checkout",
         element: <Checkout />,
@@ -175,10 +186,10 @@ const router = createBrowserRouter([
       },
     ],
   },
-  // {
-  //   path: "order/:id",
-  //   element: <OrderDetails />,
-  // },
+  {
+    path: "order/:id",
+    element: <OrderDetails />,
+  },
 ]);
 
 export default router;

@@ -71,19 +71,23 @@ const SingleProduct = ({ product, index }) => {
           {/* <button className="product_btn hover:bg-secondary font-semibold  border border-black hover:border-primary text-black mt-5 rounded-md py-2 px-5 transition-all duration-300 ease-in-out">
             Add to Cart
           </button> */}
-          <Link
-            to={user ? "" : "/login"}
-            onClick={(e) => handleAddToCart(product, index, e)}
-            className="px-3 py-2 border bg-indigo-900 hover:bg-red-600 font-semibold text-white transition-all duration-300 rounded-md"
-          >
-            Add to Cart
-          </Link>
+          <div className="flex justify-center items-center">
+            {" "}
+            <Link
+              to={user ? "" : "/login"}
+              onClick={(e) => handleAddToCart(product, index, e)}
+              className="px-3 py-2 md:py-1 md:px-1 border bg-indigo-900 hover:bg-red-600 font-semibold text-white transition-all duration-300 rounded-md text-sm"
+            >
+              Add to Cart
+            </Link>
+          </div>
         </div>
         <div className="flex productCart gap-5 flex-col absolute right-0 top-28">
           <Link to="">
             <Icon
               icon="basil:shopping-cart-solid"
-              className=" text-3xl hover:bg-secondary transition-all duration-300 border border-white border-r-0 hover:border-secondary text-white pl-2 pr-5 py-2 w-full h-full rounded-l-xl"
+              onClick={(e) => handleAddToCart(product, index, e)}
+              className=" text-3xl hover:bg-red-600 transition-all duration-300 border border-white border-r-0 hover:border-secondary text-white pl-2 pr-5 py-2 w-full h-full rounded-l-xl"
             />
           </Link>
         </div>

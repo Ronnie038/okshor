@@ -11,8 +11,10 @@ import bkashPopup from "../../assets/icons/PaymentIcons/bkash.png";
 import { useSelector } from "react-redux";
 import swal from "sweetalert";
 import { LoaderIcon } from "react-hot-toast";
-import Loading from "../../components/Loading/Loading";
+// import Loading from "../../components/Loading/Loading";
+// import f from "../../"
 import cashOnDeliveryImg from "../../assets/icons/PaymentIcons/img1.png";
+import Loading from "../../Components/Loading/Loading";
 
 const apiBaseUrl = import.meta.env.VITE_REACT_APP_API_URL;
 
@@ -111,6 +113,7 @@ const AdedAdress = () => {
     setOpenPayModal(false);
   };
 
+  console.log(products);
   return (
     <div className="relative">
       <Fade>
@@ -256,21 +259,21 @@ const AdedAdress = () => {
       {openModal ? <AddressModal setOpenModal={setOpenModal} /> : <></>}
 
       {openPayModal ? (
-        <div class="bg-black bg-opacity-70 fixed top-0 left-0 right-0 z-50 w-full p-4 h-screen">
-          <div class="relative lg:w-6/12 w-10/12 mx-auto">
+        <div className="bg-black bg-opacity-70 fixed top-0 left-0 right-0 z-50 w-full p-4 h-screen">
+          <div className="relative lg:w-6/12 w-10/12 mx-auto">
             {/* <!-- Modal content --> */}
-            <div class="relative bg-white rounded-lg shadow dark:bg-gray-700 mt-10">
+            <div className="relative bg-white rounded-lg shadow dark:bg-gray-700 mt-10">
               {/* <!-- Modal header --> */}
-              <div class="flex items-center justify-between lg:px-12 md:px-20 px-[20px] py-4 border-b rounded-t dark:border-gray-600">
-                <h3 class="text-2xl font-semibold text-gray-900 dark:text-white">
+              <div className="flex items-center justify-between lg:px-12 md:px-20 px-[20px] py-4 border-b rounded-t dark:border-gray-600">
+                <h3 className="text-2xl font-semibold text-gray-900 dark:text-white">
                   Payment
                 </h3>
                 <button
                   onClick={() => handleClosePaymentModal()}
-                  class="text-black hover:text-red-600 rounded-lg text-sm "
+                  className="text-black hover:text-red-600 rounded-lg text-sm "
                 >
                   <Icon className="text-4xl" icon="carbon:close-outline" />
-                  <span class="sr-only">Close modal</span>
+                  <span className="sr-only">Close modal</span>
                 </button>
               </div>
               <div className="py-10 bg-[#F7F7F7]">
