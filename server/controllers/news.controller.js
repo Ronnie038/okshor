@@ -3,9 +3,14 @@ const { getNewsService } = require('../services/news.service');
 
 exports.createNews = async (req, res) => {
 	try {
-		const news = JSON.parse(req.body.news);
-
-		news.image = `${process.env.APP_URL}/images/${req.file.filename}`;
+		let news;
+		console.log(req.body);
+		if (req.body.news) {
+			news = JSON.parse(req.body.news);
+			news.image = `${process.env.APP_URL}/images/${req.file.filename}`;
+		} else {
+			news = req.body;
+		}
 
 		console.log(news);
 		const newNews = await News.create(news);
@@ -15,7 +20,7 @@ exports.createNews = async (req, res) => {
 				message: 'something went wrong please try again',
 			});
 		}
-		console.log(newNews);
+
 		return res.status(200).json({
 			success: true,
 			message: 'news added ',

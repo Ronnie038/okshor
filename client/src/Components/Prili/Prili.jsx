@@ -25,7 +25,7 @@ const Prili = ({ data }) => {
 							<h2 className='text-xl mb-3 text-[#1F2659] font-bold'>
 								{news.title}
 							</h2>
-							<p className='text-sm'>{news.description}</p>
+							<div dangerouslySetInnerHTML={{ __html: news.description }} />
 						</div>
 					</div>
 				))}
