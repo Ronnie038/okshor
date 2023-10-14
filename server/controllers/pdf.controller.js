@@ -88,13 +88,14 @@ exports.downloadPdf = async (req, res) => {
 		// Set the proper headers for PDF download
 		const stat = await fs.promises.stat(filePath);
 		// res.setHeader('Content-Length', stat.size);
-		// res.setHeader('Content-Type', 'application/pdf');
+		res.setHeader('Content-Type', 'application/pdf');
 		// res.setHeader('Content-Disposition', `attachment; filename=${pdf}`);
 
 		// Pipe the file to the response stream
 		const fileStream = fs.createReadStream(filePath);
 
 		fileStream.pipe(res);
+		console.log('hello pdf');
 	} catch (error) {
 		console.error(error.message);
 		res.status(500).json({

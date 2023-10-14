@@ -40,11 +40,23 @@ const Sidebar = () => {
 			link: 'addpdfnews',
 			icon: 'streamline:shopping-bag-hand-bag-2-shopping-bag-purse-goods-item-products',
 		},
+		{
+			title: 'Add Banner',
+			link: 'addBanner',
+			icon: 'streamline:shopping-bag-hand-bag-2-shopping-bag-purse-goods-item-products',
+		},
+		{
+			title: 'Banners',
+			link: 'addminBanner',
+			icon: 'streamline:shopping-bag-hand-bag-2-shopping-bag-purse-goods-item-products',
+		},
+
 		// {
 		// 	title: 'Delivery & Return',
 		// 	link: 'delivery',
 		// 	icon: 'iconoir:delivery-truck',
 		// },
+
 		// {
 		// 	title: 'Contact Details',
 		// 	link: 'contact',

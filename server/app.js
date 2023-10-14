@@ -61,6 +61,7 @@ const productRoute = require('./routes/product.route');
 const newsRoute = require('./routes/news.route');
 const pdfRoute = require('./routes/pdf.route');
 const bcsNewsRoute = require('./routes/bscNews.route');
+const bannerRoutes = require('./routes/banner.route');
 
 // Root route
 app.get('/', (req, res) => {
@@ -75,6 +76,7 @@ app.use('/api/v1/products', productRoute);
 app.use('/api/v1/news', newsRoute);
 app.use('/api/v1/pdf', pdfRoute);
 app.use('/api/v1/bcsNews', bcsNewsRoute);
+app.use('/api/v1/banner', bannerRoutes);
 
 // Error handling middleware
 // app.use((err, req, res, next) => {
