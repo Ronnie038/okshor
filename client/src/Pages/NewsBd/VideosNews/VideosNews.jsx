@@ -7,10 +7,21 @@ import { Icon } from "@iconify/react";
 // import f from "../../../"
 import { Link } from "react-router-dom";
 import YouTubeEmbed from "../../../Components/YouTubeEmbed/YouTubeEmbed";
+import HTMLStringToComponent from "../../../Components/HTMLStringToComponent/HTMLStringToComponent";
 
 const apiBaseUrl = import.meta.env.VITE_REACT_APP_API_URL;
+
 const VideosNews = ({ category }) => {
   const [videosNews, setVideosNews] = useState([]);
+
+  const showDate = (updatedAt) => {
+    let postDate = new Date(updatedAt);
+    const day = postDate.getDate(); // 13
+    const month = postDate.toLocaleString("en-US", { month: "long" }); // Months are 0-based, so add 1 to get the correct month (10 for October)
+    const year = postDate.getFullYear();
+
+    return `${day} ${month} ${year}`;
+  };
 
   useEffect(() => {
     fetch(`${apiBaseUrl}/news?category=${category}`)
@@ -18,6 +29,7 @@ const VideosNews = ({ category }) => {
       .then((data) => setVideosNews(data.data))
       .catch((error) => console.log(error));
   }, [category]);
+
   return (
     <div>
       <div className={`${"flex justify-start"}`}>
@@ -36,19 +48,22 @@ const VideosNews = ({ category }) => {
           <p className=" my-1 text-black font-bold  mt-2 hover:text-red-600 transition-all duration-300">
             {videosNews[0]?.title.slice(0, 50) + "..."}
           </p>
-          <div className="">
+          <div className="h-[270px]">
             <YouTubeEmbed
-              videoId={`${videosNews[0]?.video}`}
-              height={"h-[270px]"}
+              videoUrl={`${videosNews[0]?.video}`}
+              height={"h-full w-full"}
             ></YouTubeEmbed>
           </div>
           <div className="my-2 flex justify-start items-center gap-1 text-[14px] font-semibold text-gray-500">
             {" "}
             <Icon icon="mdi:clock-outline" />
-            <p>Oct 6, 2023</p>
+            <p>{showDate(videosNews[0]?.updatedAt)}</p>
           </div>
           <p className="text-[15px] text-gray-500">
-            {videosNews[0]?.description.slice(0, 200) + "..."}
+            <HTMLStringToComponent
+              htmlString={videosNews[0]?.description}
+            ></HTMLStringToComponent>
+
             <Link
               to={`/ভিডিও/${encodeURIComponent(
                 videosNews[0]?.title.split(" ").join("-")
@@ -76,13 +91,13 @@ const VideosNews = ({ category }) => {
                 )}/${singleNews._id}`}
                 key={idx}
               >
-                <div className="flex items-center gap-4  mb-3 border p-2 shadow-lg">
+                <div className=" mb-3 border p-2 shadow-lg">
                   <div className="overflow-hidden">
                     <div className=" w-full overflow-hidden ">
                       {" "}
-                      <div className="w-full">
+                      <div className="w-full h-[170px]">
                         <YouTubeEmbed
-                          videoId={`${singleNews?.video} `}
+                          videoUrl={`${singleNews?.video} `}
                           height={"h-full w-full"}
                         ></YouTubeEmbed>
                       </div>
@@ -92,7 +107,7 @@ const VideosNews = ({ category }) => {
                       <div className="mt-2 flex justify-end items-center gap-1 text-[11px] font-semibold text-gray-500">
                         {" "}
                         <Icon icon="mdi:clock-outline" />
-                        <p>Oct 6, 2023</p>
+                        <p>{showDate(singleNews?.updatedAt)}</p>
                       </div>
                     </div>
                   </div>

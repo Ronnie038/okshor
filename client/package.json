@@ -11,6 +11,8 @@
   },
   "dependencies": {
     "@emotion/react": "^11.11.1",
+    "@iconify/icons-fa": "^1.2.3",
+    "@iconify/icons-mdi": "^1.2.47",
     "@iconify/react": "^4.1.1",
     "@reduxjs/toolkit": "^1.9.7",
     "daisyui": "^3.9.2",

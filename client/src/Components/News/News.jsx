@@ -7,6 +7,15 @@ const apiBaseUrl = import.meta.env.VITE_REACT_APP_API_URL;
 const News = ({ category }) => {
   const [news, setNews] = useState([]);
 
+  const showDate = (updatedAt) => {
+    let postDate = new Date(updatedAt);
+    const day = postDate.getDate(); // 13
+    const month = postDate.toLocaleString("en-US", { month: "long" }); // Months are 0-based, so add 1 to get the correct month (10 for October)
+    const year = postDate.getFullYear();
+
+    return `${day} ${month} ${year}`;
+  };
+
   console.log(category);
   useEffect(() => {
     fetch(`${apiBaseUrl}/news?category=${category}`)
@@ -43,7 +52,7 @@ const News = ({ category }) => {
           <div className="my-2 flex justify-start items-center gap-1 text-[14px] font-semibold text-gray-500">
             {" "}
             <Icon icon="mdi:clock-outline" />
-            <p>Oct 6, 2023</p>
+            <p>{showDate(news[0]?.updatedAt)}</p>
           </div>
           <p className="text-[15px] text-gray-500">
             {news[0]?.description.slice(0, 200) + "..."}
@@ -92,7 +101,7 @@ const News = ({ category }) => {
                       <div className="mt-2 flex justify-end items-center gap-1 text-[12px] font-semibold text-gray-500">
                         {" "}
                         <Icon icon="mdi:clock-outline" />
-                        <p>Oct 6, 2023</p>
+                        <p>{showDate(singleNews?.updatedAt)}</p>
                       </div>
                     </div>
                   </div>
