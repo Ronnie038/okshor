@@ -50,3 +50,30 @@ exports.getBcs = async (req, res) => {
 		});
 	}
 };
+
+exports.deleteNewsById = async (req, res) => {
+	try {
+		const newsId = req.params.id;
+
+		// Find the product by ID and delete it
+		const deltedNews = await Bcs.findByIdAndDelete(newsId);
+
+		if (!deltedNews) {
+			return res.status(404).json({
+				status: 'fail',
+				message: 'Product not found',
+			});
+		}
+
+		res.status(200).json({
+			success: true,
+			message: 'Product deleted',
+			data: deltedNews,
+		});
+	} catch (error) {
+		res.status(500).json({
+			status: 'fail',
+			message: 'An error occurred while deleting the product',
+		});
+	}
+};

@@ -31,8 +31,18 @@ const Sidebar = () => {
 			icon: 'streamline:shopping-bag-hand-bag-2-shopping-bag-purse-goods-item-products',
 		},
 		{
+			title: 'AllNews',
+			link: 'allnews',
+			icon: 'streamline:shopping-bag-hand-bag-2-shopping-bag-purse-goods-item-products',
+		},
+		{
 			title: 'Add BcsNews',
 			link: 'addbcsnews',
+			icon: 'streamline:shopping-bag-hand-bag-2-shopping-bag-purse-goods-item-products',
+		},
+		{
+			title: 'BcsNewses',
+			link: 'bcsnewses',
 			icon: 'streamline:shopping-bag-hand-bag-2-shopping-bag-purse-goods-item-products',
 		},
 		{

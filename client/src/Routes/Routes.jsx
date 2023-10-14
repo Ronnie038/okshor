@@ -42,6 +42,8 @@ import OrderDetails from '../Components/OrderDetails/OrderDetails';
 import AddPdf from '../Pages/Dashboard/AddPdf/AddPdf';
 import AddBanner from '../Pages/Dashboard/Banner/AddBanner';
 import AdminBanners from '../Pages/Dashboard/Banner/AdminBanners';
+import BcsNewses from '../Pages/Dashboard/BcsNews/BcsNewses';
+import Newses from '../Pages/Dashboard/News/Newses';
 const router = createBrowserRouter([
 	{
 		path: '/',
@@ -168,8 +170,16 @@ const router = createBrowserRouter([
 				element: <AddNews />,
 			},
 			{
+				path: 'allnews',
+				element: <Newses />,
+			},
+			{
 				path: 'addbcsnews',
 				element: <AddBcsNews />,
+			},
+			{
+				path: 'bcsnewses',
+				element: <BcsNewses />,
 			},
 			{
 				path: 'addpdfnews',

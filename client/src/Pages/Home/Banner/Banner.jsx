@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import banner from '../../../assets/Home/BannerImg.png';
 import Icon1 from '../../../assets/Home/Icon1.png';
 import Icon2 from '../../../assets/Home/Icon2.png';
@@ -17,25 +17,49 @@ import 'swiper/css/navigation';
 
 // import required modules
 import { Pagination, Navigation } from 'swiper/modules';
+const apiUrl = import.meta.env.VITE_REACT_APP_API_URL;
 
 const Banner = () => {
-	const banners = [
-		{
-			image: `${banner}`,
-			title: 'সত্য প্রতিবেদন আমরা আপনার জন্য তৈরি করি সংবাদে আপনার সাথে সবসময়',
-			button: 'আরও দেখুন',
-		},
-		{
-			image: `${banner}`,
-			title: 'সত্য প্রতিবেদন আমরা আপনার জন্য তৈরি করি সংবাদে ',
-			button: 'আরও দেখুন',
-		},
-		{
-			image: `${banner}`,
-			title: 'সত্য প্রতিবেদন আমরা আপনার জন্য',
-			button: 'আরও দেখুন',
-		},
-	];
+	const [banners, setBanners] = useState([]);
+
+	const fetchBanners = async () => {
+		try {
+			const res = await fetch(`${apiUrl}/banner`);
+			const data = await res.json();
+			if (res.ok) {
+				console.log(data.data);
+
+				// const images = data?.data?.map((banner) => {
+				// 	return { original: banner.image, thumbnail: banner.title };
+				// });
+				setBanners(data.data);
+			}
+		} catch (error) {
+			console.log(error);
+		}
+	};
+
+	useEffect(() => {
+		fetchBanners();
+	}, []);
+
+	// const banners = [
+	// 	{
+	// 		image: `${banner}`,
+	// 		title: 'সত্য প্রতিবেদন আমরা আপনার জন্য তৈরি করি সংবাদে আপনার সাথে সবসময়',
+	// 		button: 'আরও দেখুন',
+	// 	},
+	// 	{
+	// 		image: `${banner}`,
+	// 		title: 'সত্য প্রতিবেদন আমরা আপনার জন্য তৈরি করি সংবাদে ',
+	// 		button: 'আরও দেখুন',
+	// 	},
+	// 	{
+	// 		image: `${banner}`,
+	// 		title: 'সত্য প্রতিবেদন আমরা আপনার জন্য',
+	// 		button: 'আরও দেখুন',
+	// 	},
+	// ];
 	const BcsCategories = [
 		{
 			category: 'বিসিএস সিলেবাস',
@@ -108,9 +132,9 @@ const Banner = () => {
 									<div className='font-semibold text-[24px] text-white absolute top-[21%] left-[15%]'>
 										<p className='my-2 w-[400px] leading-10'>{banner.title}</p>
 
-										<button className='p-2 border border-white text-[11px] my-3'>
+										{/* <button className='p-2 border border-white text-[11px] my-3'>
 											{banner.button}
-										</button>
+										</button> */}
 									</div>
 								</div>
 							</SwiperSlide>

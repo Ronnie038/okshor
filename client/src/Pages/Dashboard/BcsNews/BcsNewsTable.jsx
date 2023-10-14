@@ -1,38 +1,36 @@
-import React, { useEffect, useState } from 'react';
 import { Icon } from '@iconify/react';
-// import image1 from '../../../assets/KidsNewItems/img2.png';
-// import icon1 from '../../../assets/Fav icon/Rectangle 284.png';
+
 import swal from 'sweetalert';
-import { Link } from 'react-router-dom';
+
 const apiBaseUrl = import.meta.env.VITE_REACT_APP_API_URL;
-const ProductTable = ({ products, setReload }) => {
+const BcsNewsTable = ({ newses, setRefetch }) => {
 	// ! ====> Delet Product
 	const handleDelete = (id) => {
 		console.log('delet id', id);
 		swal({
 			title: 'Are you sure?',
-			text: 'Once deleted, you will not be able to recover this product!',
+			text: 'Once deleted, you will not be able to recover this news!',
 			icon: 'warning',
 			buttons: true,
 			dangerMode: true,
 		}).then((willDelete) => {
 			if (willDelete) {
-				fetch(`${apiBaseUrl}/products/${id}`, {
+				fetch(`${apiBaseUrl}/bcsNews/${id}`, {
 					method: 'DELETE',
 					credentials: 'include',
 				})
 					.then((res) => res.json())
 					.then((result) => {
 						if (result.success) {
-							setReload((prev) => !prev);
+							setRefetch((prev) => !prev);
 						}
 					});
 				// ! ====> Aleart
-				swal('Your product item has been deleted !', {
+				swal('Your news item has been deleted !', {
 					icon: 'success',
 				});
 			} else {
-				swal('Your product item is safe!');
+				swal('Your news item is safe!');
 			}
 		});
 	};
@@ -44,74 +42,57 @@ const ProductTable = ({ products, setReload }) => {
 					<thead className='text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400'>
 						<tr>
 							<th scope='col' className='px-6 py-3'>
-								Product Id
+								News Id
 							</th>
 							<th scope='col' className='px-6 py-3'>
 								Image
 							</th>
+
 							<th scope='col' className='px-6 py-3'>
-								Product Name
+								Title
 							</th>
 							<th scope='col' className='px-6 py-3'>
 								Category
 							</th>
 							<th scope='col' className='px-6 py-3'>
-								Stock
+								Subcateogry
 							</th>
-							<th scope='col' className='px-6 py-3'>
-								Regular Price
-							</th>
-							<th scope='col' className='px-6 py-3'>
-								Offer Price
-							</th>
-							<th scope='col' className='px-6 py-3'>
-								Discount
-							</th>
-							<th scope='col' className='px-6 py-3'>
-								Edit Product
-							</th>
+
 							<th scope='col' className='px-6 py-3'>
 								Delete
 							</th>
 						</tr>
 					</thead>
 					<tbody>
-						{products?.map((product) => (
+						{newses?.map((news) => (
 							<tr
-								key={product._id}
+								key={news._id}
 								className='bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600'
 							>
 								<th
 									scope='row'
 									className='px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white'
 								>
-									{product._id}
+									{news._id}
 								</th>
 								<td className='px-6 py-4'>
 									<div className='flex gap-1'>
 										<div className='h-16 w-16 rounded-md overflow-hidden'>
 											<img
-												src={product.image}
+												src={news.image}
 												alt='Image'
 												className='object-cover object-center h-full w-full'
 											/>
 										</div>
 									</div>
 								</td>
-								<td className='px-6 py-4'>{product.name}</td>
-								<td className='px-6 py-4'>{product.category}</td>
-								<td className='px-6 py-4'>{product.stock}</td>
-								<td className='px-6 py-4'>{product.regularPrice}৳</td>
-								<td className='px-6 py-4'>{product.offerPrice}৳</td>
-								<td className='px-6 py-4'>{product.offerPercentage}%</td>
-								<td className='px-6 py-4'>
-									<Link to={`/dashboard/updateProduct/${product._id}`}>
-										<Icon icon='bx:edit' className='text-3xl text-[#3B95B0]' />
-									</Link>
-								</td>
+								<td className='px-6 py-4'>{news.title}</td>
+								<td className='px-6 py-4'>{news.category}</td>
+								<td className='px-6 py-4'>{news.subcategory}</td>
+
 								<td className='px-6 py-4'>
 									<Icon
-										onClick={() => handleDelete(product._id)}
+										onClick={() => handleDelete(news._id)}
 										icon='fluent-mdl2:delete'
 										className='text-3xl text-red-700'
 									/>
@@ -125,4 +106,4 @@ const ProductTable = ({ products, setReload }) => {
 	);
 };
 
-export default ProductTable;
+export default BcsNewsTable;

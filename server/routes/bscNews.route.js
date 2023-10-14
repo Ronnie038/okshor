@@ -11,4 +11,7 @@ router
 	.post(uploader.single('bcsImage'), bcsController.createBcs)
 	.get(bcsController.getBcs);
 
+router
+	.route('/:id')
+	.delete(verifyToken, authorization('admin'), bcsController.deleteNewsById);
 module.exports = router;

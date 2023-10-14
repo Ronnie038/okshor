@@ -11,5 +11,8 @@ router
 	.post(uploader.single('images'), newsController.createNews)
 	.get(newsController.getNews);
 
-router.route('/:_id').get(newsController.getSingleNews);
+router
+	.route('/:_id')
+	.get(newsController.getSingleNews)
+	.delete(verifyToken, authorization('admin'), newsController.deleteNewsById);
 module.exports = router;
