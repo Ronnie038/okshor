@@ -81,7 +81,7 @@ exports.getSingleNews = async (req, res) => {
 
 exports.deleteNewsById = async (req, res) => {
 	try {
-		const newsId = req.params.id;
+		const newsId = req.params._id;
 
 		// Find the product by ID and delete it
 		const deltedNews = await News.findByIdAndDelete(newsId);
