@@ -136,7 +136,7 @@ const AddBcsNews = () => {
 										required
 										type='file'
 										name='images'
-										accept='image/*'
+										// accept='image/*'
 										onChange={handleImageChange}
 										className='w-full border-purple-200 p-3 mt-3'
 										// onBlur={handleInputBlur}
