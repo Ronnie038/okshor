@@ -4,9 +4,11 @@
   box-sizing: border-box;
 }
 
-/* body {
-  font-family: "Bangla", Arial, sans-serif !important;
-} */
+body {
+  /* font-family: "Bangla", Arial, sans-serif !important; */
+  max-width: 1400px;
+  margin: 0 auto !important;
+}
 /* SingleProduct Css */
 
 .productCart {
