@@ -6,6 +6,7 @@ import ItemsSlices from './slices/ItemsSlices';
 import CartSlices from './slices/CartSlices';
 import ProductsSlices from './slices/productsSlices';
 import BcsNewsSlices from './slices/bcsNewsSlices';
+import loadingSlices from './slices/loadingSlices';
 
 const store = configureStore({
 	reducer: {
@@ -15,6 +16,7 @@ const store = configureStore({
 		cartItems: CartSlices,
 		products: ProductsSlices,
 		bcsNewses: BcsNewsSlices,
+		isLoading: loadingSlices,
 	},
 });
 store.dispatch(fetchUserProfile());
