@@ -3,7 +3,7 @@ import { Icon } from '@iconify/react';
 import JoditEditor from 'jodit-react';
 
 import { newsCategory } from '../../../../api/fakeData/fakedata';
-import { createBcsService } from '../../../../api/bcsService';
+
 import toast from 'react-hot-toast';
 import { createNewsService } from '../../../../api/newsService';
 
@@ -49,7 +49,7 @@ const AddBcsNews = () => {
 		formDataObj.append('images', selectedImages[0]);
 
 		// console.log(formDataObj);
-		createBcsService(formDataObj, setLoading, toast, form, setSelectedImages);
+		createNewsService(formDataObj, setLoading, toast, form, setSelectedImages);
 	};
 
 	const handleImageChange = (e) => {
