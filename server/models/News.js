@@ -5,6 +5,8 @@ const NewsSchema = new mongoose.Schema(
 	{
 		title: String,
 		description: String,
+		mainDescription: String,
+
 		image: {
 			type: String,
 			required: [validator.isURL('', true), 'Please provide a valid url'],

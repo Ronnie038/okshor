@@ -11,6 +11,7 @@ const addToCart = async () => {
     }
   };
 
+  
   // Example function to update a cart item's quantity
   const updateCartItem = async (itemId, newQuantity) => {
     try {

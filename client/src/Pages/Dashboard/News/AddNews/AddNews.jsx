@@ -1,21 +1,20 @@
 import { useState, useRef } from 'react';
 import { Icon } from '@iconify/react';
-import JoditEditor from 'jodit-react';
+import ReactQuill from 'react-quill';
 
-import { newsCategory } from '../../../../api/fakeData/fakedata';
+import { modules, newsCategory } from '../../../../api/fakeData/fakedata';
 
 import toast from 'react-hot-toast';
 import { createNewsService } from '../../../../api/newsService';
 
-const AddBcsNews = () => {
-	const editor = useRef(null);
-	const [description, setDescription] = useState('');
+const AddNews = () => {
+	const [mainDescription, setMainDescription] = useState('');
 	const [selectedCategoryIndex, setSelectedCategoryIndex] = useState(0);
 	const [formData, setFormData] = useState({});
 	const [selectedImages, setSelectedImages] = useState([]);
 	const [video, setVideo] = useState('');
 	const isVideo = newsCategory[selectedCategoryIndex - 1]?.category == 'video';
-	console.log(isVideo);
+	console.log(mainDescription);
 	const [loading, setLoading] = useState([]);
 	const handleInput = (e) => {
 		const { name, value } = e.target;
@@ -29,7 +28,7 @@ const AddBcsNews = () => {
 		setLoading(true);
 		const newFormData = {
 			...formData,
-			description,
+			mainDescription,
 			category: newsCategory[selectedCategoryIndex - 1].category,
 		};
 
@@ -189,19 +188,39 @@ const AddBcsNews = () => {
 							/>
 						</div>
 					)}
-					<div className='mt-6'>
-						<label className=' font-semibold cursor-pointer'>
-							News Descripton
+					<div>
+						<label
+							htmlFor='shortDesc'
+							className=' font-semibold  cursor-pointer'
+						>
+							Short Description
 						</label>{' '}
 						<br />
-						<JoditEditor
-							ref={editor}
-							value={description}
-							// config={}
-							tabIndex={1} // tabIndex of textarea
-							// preferred to use only this option to update the description for performance reasons
-							onChange={(newContent) => setDescription(newContent)}
-						/>
+						<textarea
+							required
+							onChange={handleInput}
+							name='mainDescription'
+							id='shortDesc'
+							cols='30'
+							rows='3'
+							className='border w-full p-5'
+							placeholder='write here ...'
+						></textarea>
+					</div>
+					<div className='mt-6'>
+						<label className=' font-semibold  cursor-pointer'>
+							Main Description
+						</label>{' '}
+						<br />
+						<div className='quill-container mt-3'>
+							<ReactQuill
+								theme='snow'
+								value={mainDescription}
+								onChange={setMainDescription}
+								modules={modules}
+								className=''
+							/>
+						</div>
 					</div>
 					<div className='flex justify-end my-10'>
 						<button
@@ -217,4 +236,4 @@ const AddBcsNews = () => {
 	);
 };
 
-export default AddBcsNews;
+export default AddNews;

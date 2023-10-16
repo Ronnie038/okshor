@@ -1,4 +1,5 @@
 import { Icon } from '@iconify/react';
+import { Link } from 'react-router-dom';
 
 import swal from 'sweetalert';
 
@@ -60,6 +61,9 @@ const NewsTable = ({ newses, setRefetch }) => {
 							<th scope='col' className='px-6 py-3'>
 								Delete
 							</th>
+							<th scope='col' className='px-6 py-3'>
+								Edit
+							</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -96,6 +100,11 @@ const NewsTable = ({ newses, setRefetch }) => {
 										icon='fluent-mdl2:delete'
 										className='text-3xl text-red-700'
 									/>
+								</td>
+								<td className='px-6 py-4'>
+									<Link to={`/dashboard/updateNews/${news._id}`}>
+										<Icon icon='bx:edit' className='text-3xl text-green-700' />
+									</Link>
 								</td>
 							</tr>
 						))}

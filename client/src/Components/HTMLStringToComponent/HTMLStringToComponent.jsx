@@ -1,13 +1,12 @@
-import React from "react";
-
+import './HtmlString.css';
 const HTMLStringToComponent = ({ htmlString }) => {
-  return (
-    <div
-      dangerouslySetInnerHTML={{
-        __html: htmlString,
-      }}
-    />
-  );
+	return (
+		<div
+			dangerouslySetInnerHTML={{
+				__html: htmlString,
+			}}
+		/>
+	);
 };
 
 export default HTMLStringToComponent;

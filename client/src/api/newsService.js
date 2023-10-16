@@ -47,4 +47,46 @@ const createNewsService = (
 	create();
 };
 
-export { createNewsService };
+const updateNewsService = (id, formData, setLoading, toast) => {
+	const update = async () => {
+		try {
+			let res = await fetch(`${apiUrl}/news/${id}`, {
+				method: 'PUT',
+				headers: {
+					'Content-Type': 'Application/json',
+				},
+				credentials: 'include',
+				body: formData,
+			});
+
+			if (res.ok) {
+				toast.success('news updated');
+			}
+			const data = await res.json();
+
+			console.log(data);
+		} catch (error) {
+			console.log(error);
+		} finally {
+			setLoading(false);
+		}
+	};
+
+	update();
+};
+
+const getSingeNewsService = async (id, setNews, setMainDesc) => {
+	try {
+		const res = await fetch(`${apiUrl}/news/${id}`);
+		const data = await res.json();
+		if (res.ok) {
+			setNews(data.data);
+			setMainDesc(data.data?.mainDescription);
+		} else {
+			console.log(data.message);
+		}
+	} catch (error) {
+		console.log(error);
+	}
+};
+export { createNewsService, updateNewsService, getSingeNewsService };

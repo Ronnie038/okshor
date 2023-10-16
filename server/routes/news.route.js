@@ -14,5 +14,6 @@ router
 router
 	.route('/:_id')
 	.get(newsController.getSingleNews)
+	.put(verifyToken, authorization('admin'), newsController.updateNewsById)
 	.delete(verifyToken, authorization('admin'), newsController.deleteNewsById);
 module.exports = router;

@@ -1,8 +1,8 @@
 import { useState, useRef } from 'react';
 import { Icon } from '@iconify/react';
-import JoditEditor from 'jodit-react';
+import ReactQuill from 'react-quill';
 
-import { bcsCategory } from '../../../../api/fakeData/fakedata';
+import { bcsCategory, modules } from '../../../../api/fakeData/fakedata';
 import { createBcsService } from '../../../../api/bcsService';
 import toast from 'react-hot-toast';
 
@@ -176,19 +176,21 @@ const AddBcsNews = () => {
 							))}
 						</div>
 					</div>
+
 					<div className='mt-6'>
-						<label className=' font-semibold cursor-pointer'>
-							News Descripton
+						<label className=' font-semibold  cursor-pointer'>
+							Description
 						</label>{' '}
 						<br />
-						<JoditEditor
-							ref={editor}
-							value={description}
-							// config={}
-							tabIndex={1} // tabIndex of textarea
-							// preferred to use only this option to update the description for performance reasons
-							onChange={(newContent) => setDescription(newContent)}
-						/>
+						<div className='quill-container mt-3'>
+							<ReactQuill
+								theme='snow'
+								value={description}
+								onChange={setDescription}
+								modules={modules}
+								className=''
+							/>
+						</div>
 					</div>
 					<div className='flex justify-end my-10'>
 						<button

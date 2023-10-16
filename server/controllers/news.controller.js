@@ -79,6 +79,36 @@ exports.getSingleNews = async (req, res) => {
 	}
 };
 
+exports.updateNewsById = async (req, res) => {
+	try {
+		const { _id } = req.params;
+		const updateData = req.body; // Assuming the updated data is sent in the request body
+
+		// Use async/await to find and update the news by ID
+		const news = await News.findByIdAndUpdate(_id, updateData, { new: true });
+
+		if (!news) {
+			// Return a 404 status code and a more informative message if the news is not found
+			return res.status(404).json({
+				success: false,
+				message: 'News not found',
+			});
+		}
+
+		// Return a 200 status code with the updated news
+		res.status(200).json({
+			success: true,
+			data: news,
+		});
+	} catch (error) {
+		// Handle any unexpected errors with a 500 status code
+		res.status(500).json({
+			success: false,
+			message: 'Internal server error',
+		});
+	}
+};
+
 exports.deleteNewsById = async (req, res) => {
 	try {
 		const newsId = req.params._id;

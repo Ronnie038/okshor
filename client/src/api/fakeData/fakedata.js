@@ -261,4 +261,19 @@ const newsCategory = [
 	{ categoryTitle: 'সাম্প্রতিক বিশ্ব', category: 'world' },
 	{ categoryTitle: 'ক্লাস রেকর্ডিং ভিডিও', category: 'video' },
 ];
-export { bcsData, bcsCategory, newsCategory };
+
+const modules = {
+	toolbar: [
+		[{ header: [1, 2, 3, 4, 5, 6, false] }, { font: [] }, { size: [] }],
+		['bold', 'italic', 'underline', 'strike', 'blockquote'],
+		[{ list: 'ordered' }, { list: 'bullet' }],
+
+		[{ indent: '-1' }, { indent: '+1' }],
+		['link', 'image', 'video'],
+
+		[{ align: ['justify', 'right', 'center', false] }],
+		[{ color: [] }, { background: [] }],
+	],
+};
+
+export { bcsData, bcsCategory, newsCategory, modules };
