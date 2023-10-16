@@ -13,6 +13,7 @@ import SingleLandscapeView from "./SingleLandscapeView/SingleLandscapeView";
 import ReactPaginate from "react-paginate";
 
 const apiBaseUrl = import.meta.env.VITE_REACT_APP_API_URL;
+
 const Shop = () => {
   const [showByView, setshowByView] = useState("gridview");
   const [price, setPrice] = useState(10); // Initial value
