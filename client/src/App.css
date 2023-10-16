@@ -11,6 +11,10 @@ body {
 }
 /* SingleProduct Css */
 
+/* .logo-img {
+	width: 80px !important;
+} */
+
 .productCart {
 	visibility: hidden;
 	opacity: 0;
