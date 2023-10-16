@@ -50,14 +50,14 @@ const OrderList = ({ order }) => {
 				<td>{date.toLocaleDateString('en-US', updatedAt)}</td>
 
 				<td className='py-6 text-center'>
-					{products?.map((item) => (
-						<img src={item.image} className='h-20' alt='' />
+					{products?.map((item, idx) => (
+						<img key={idx} src={item.image} className='h-20' alt='' />
 					))}
 				</td>
 				<td className='py-6 text-center'>
 					{products?.map((item) => (
 						<>
-							<p>{item.name}</p>
+							<p>{item.title}</p>
 						</>
 					))}
 				</td>
