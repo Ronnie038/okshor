@@ -1,4 +1,5 @@
 import React from "react";
+import { setDocumentTitle } from "../UseDocumentTitle/UseDocumentTitle";
 
 const Prili = ({ data }) => {
   const showDate = (createdAt) => {
@@ -9,7 +10,9 @@ const Prili = ({ data }) => {
 
     return `${day} ${month} ${year}`;
   };
+  setDocumentTitle(`অক্ষর | ${data[0]?.subcategory}`);
 
+  console.log(data);
   return (
     <div className="flex flex-col md:flex-row gap-3 justify-between lg:w-10/12 w-[90%]  mx-auto py-14">
       <div className="w-full md:w-[70%]">
@@ -25,7 +28,10 @@ const Prili = ({ data }) => {
               <h2 className="text-xl mb-3 text-[#1F2659] font-bold">
                 {news.title}
               </h2>
-              <div dangerouslySetInnerHTML={{ __html: news.description }} />
+              <div
+                className="htmlString"
+                dangerouslySetInnerHTML={{ __html: news.description }}
+              />
             </div>
           </div>
         ))}
@@ -41,7 +47,7 @@ const Prili = ({ data }) => {
           {data?.map((news, idx) => (
             <div
               key={idx}
-              className="flex flex-col lg:flex-row sm:justify-between gap-2 sm:border-b-2 sm:border-gray-500 mb-4 h-[300px] sm:h-[200px] md:h-auto"
+              className="flex flex-col lg:flex-row sm:justify-between gap-2 sm:border-b-2 sm:border-gray-500 mb-4 h-[300px] sm:h-auto md:h-auto"
             >
               {" "}
               <img src={news?.image} alt="" className="lg:w-[60px] w-full" />

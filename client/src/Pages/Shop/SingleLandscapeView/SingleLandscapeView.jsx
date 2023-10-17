@@ -45,7 +45,7 @@ const SingleLandscapeView = ({ product, index }) => {
   };
   return (
     <div>
-      <div className="relative product cursor-pointer lg:border p-5 rounded-md  flex justify-around gap-5">
+      <div className="relative product cursor-pointer lg:border p-5 rounded-md  flex justify-around gap-5 bg-[#eee]">
         <div className="p-5  hover:text-white hover:bg-gradient-to-t from-[#1d1c3a] from-0% to-transparent to-95% transition-all duration-300 ease-in-out w-[40%] ">
           <img
             src={product?.image}

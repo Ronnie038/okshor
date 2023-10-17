@@ -31,13 +31,17 @@ const YouTubeEmbed = ({ videoUrl, height }) => {
 
     <div className={`video-container ${height}`}>
       {!iframeVisible ? (
-        <div className="play-button" onClick={(e) => handlePlayClick(e)}>
+        <div
+          className="play-container flex justify-center items-center h-full w-full bg-black"
+          onClick={(e) => handlePlayClick(e)}
+        >
           {/* <Icon icon="ic:baseline-play-circle" /> */}
           <Icon
             icon="ic:baseline-play-circle"
             width={60}
             height={60}
-            color="#fff"
+            color="red"
+            // className="bg-red-500"
           />
         </div>
       ) : (

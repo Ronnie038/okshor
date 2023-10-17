@@ -9,10 +9,12 @@ import { toast } from "react-hot-toast";
 import { addToCart } from "../../store/slices/CartSlices";
 import { useDispatch } from "react-redux";
 import { getSingleProduct } from "../../api/ProductsServices";
+import SingleProduct from "../../Components/SingleProduct/SingleProduct";
 
 const SingleProductDetails = () => {
   const user = true;
   const [images, setImages] = useState([]);
+  const [products, setProducts] = useState([]);
   const dispatch = useDispatch();
   const { _id } = useParams();
   const [product, setProduct] = useState(); // Initialize products as null
@@ -32,6 +34,7 @@ const SingleProductDetails = () => {
     }
   };
 
+  const apiBaseUrl = import.meta.env.VITE_REACT_APP_API_URL;
   //   const images = [
   //     {
   //       original: `${image}`,
@@ -50,6 +53,17 @@ const SingleProductDetails = () => {
   //       thumbnail: `${image}`,
   //     },
   //   ];
+
+  useEffect(() => {
+    fetch(`${apiBaseUrl}/products`)
+      .then((res) => res.json())
+      .then((data) => {
+        // setFilteredProducts(data.products);
+        setProducts(data.products.slice(0, 8));
+      })
+      .catch((error) => console.log(error));
+  }, []);
+  console.log(products);
   useEffect(() => {
     getSingleProduct(_id, setProduct, setImages);
   }, [_id]);
@@ -87,7 +101,7 @@ const SingleProductDetails = () => {
                         </ins>
                       </p>
                       <h4 className="bg-[#DE2121] px-3 py-1 text-sm text-white font-semibold text-center">
-                        50% Off
+                        {product?.offerPercentage}% Off
                       </h4>
                     </div>
                     <hr />
@@ -116,6 +130,26 @@ const SingleProductDetails = () => {
                     </div>
                   </div>
                 </div>
+              </div>
+            </div>
+          </div>
+          <div className="w-10/12 mx-auto">
+            <div className="">
+              <div className="text-center gap-1 flex items-center justify-center">
+                {" "}
+                <span className="h-1 w-16 inline-block bg-indigo-600"></span>
+                <p className="text-2xl text-center font-bold pb-3 inline-block ">
+                  Newest Products
+                </p>
+                <span className="h-1 w-16 inline-block bg-indigo-600"></span>
+              </div>
+              <div className="grid md:grid-cols-2 grid-cols-1 lg:grid-cols-4 gap-5 mt-6">
+                {products?.map((product, index) => (
+                  <Link key={index} to={`/products/${product?._id}`}>
+                    {" "}
+                    <SingleProduct product={product}></SingleProduct>
+                  </Link>
+                ))}
               </div>
             </div>
           </div>

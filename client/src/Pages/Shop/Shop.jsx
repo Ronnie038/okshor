@@ -1,20 +1,18 @@
 import { useEffect, useState } from "react";
 
-// import "react-slider/range.css";
-// import "react-input-range/lib/css/index.css"; // Import the default CSS for styling
-// import shopBanner from "../../assets/bedding.webp";
-// import SingleProduct from "../../Components/SingleProduct/SingleProduct";
 import { Link } from "react-router-dom";
 import { Icon } from "@iconify/react";
 import SingleProduct from "../../Components/SingleProduct/SingleProduct";
-// import SingleLandscapeView from "./SingleLandscapeView.jsx/SingleLandscapeView";
 import shopBanner from "../../assets/shop/ShopImage2.webp";
 import SingleLandscapeView from "./SingleLandscapeView/SingleLandscapeView";
 import ReactPaginate from "react-paginate";
+import { setDocumentTitle } from "../../Components/UseDocumentTitle/UseDocumentTitle";
 
 const apiBaseUrl = import.meta.env.VITE_REACT_APP_API_URL;
 
 const Shop = () => {
+  setDocumentTitle("অক্ষর | shop");
+
   const [showByView, setshowByView] = useState("gridview");
   const [price, setPrice] = useState(10); // Initial value
   const [products, setProducts] = useState([]);
@@ -25,6 +23,10 @@ const Shop = () => {
   console.log({ itemsPerPage });
   const handleSliderChange = (event) => {
     const inputPrice = event.target.value;
+    console.log(inputPrice);
+    if (inputPrice == 10) {
+      return setFilteredProducts(products);
+    }
     setPrice(inputPrice);
     const filterdByPrice = products?.filter(
       (item) => item.regularPrice <= inputPrice
@@ -149,7 +151,7 @@ const Shop = () => {
                   />
                 </div>
                 <div className="flex items-center gap-1">
-                  <span>sort By</span>
+                  <span className="font-bold">Sort By </span>
                   <select
                     name=""
                     id=""
@@ -164,16 +166,21 @@ const Shop = () => {
                   </select>
                 </div>
                 <div className="flex items-center gap-1">
-                  <span>Show</span>
-                  <select name="" id="" onChange={handleShowPage}>
+                  <span className="font-bold">Show</span>
+                  <select
+                    name=""
+                    id=""
+                    onChange={handleShowPage}
+                    className="border"
+                  >
                     <option value={24}>24</option>
                     <option value={12}>12</option>
                   </select>
-                  <span>per page</span>
+                  <span className="font-bold">per page</span>
                 </div>
                 <div className=" flex items-center gap-1">
                   {" "}
-                  <h2 className="  ">Price :</h2>
+                  <h2 className=" text-sm ">Price :</h2>
                   <input
                     type="range"
                     min={10}
@@ -182,7 +189,7 @@ const Shop = () => {
                     onChange={handleSliderChange}
                     className=""
                   />
-                  <p className="text-orange-500 font-bold"> £10 - £{price}</p>
+                  <p className="text-orange-500 font-bold"> ৳10 - ৳{price}</p>
                 </div>
               </div>
             </div>
@@ -190,8 +197,8 @@ const Shop = () => {
               <div
                 className={`${
                   showByView == "gridview"
-                    ? "grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 "
-                    : "flex flex-col gap-6"
+                    ? "grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5  justify-around"
+                    : "flex flex-col gap-6  justify-around"
                 }`}
               >
                 {currentItems &&

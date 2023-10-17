@@ -1,6 +1,8 @@
 import React from "react";
+import { setDocumentTitle } from "../../Components/UseDocumentTitle/UseDocumentTitle";
 
 const Contact = () => {
+  setDocumentTitle("অক্ষর | Contact");
   return (
     <div className="mx-5 lg:mx-0">
       <div className=" w-10/12 mx-auto mt-8 ">

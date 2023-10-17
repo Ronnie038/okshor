@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import { useLocation, useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
 import ReactPaginate from "react-paginate";
+import { setDocumentTitle } from "../../../Components/UseDocumentTitle/UseDocumentTitle";
+// import { setDocumentTitle } from "../../../Components/setDocumentTitle/setDocumentTitle";
 
 const apiBaseUrl = import.meta.env.VITE_REACT_APP_API_URL;
 const AllNews = () => {
@@ -32,7 +34,8 @@ const AllNews = () => {
   };
 
   // {''''''''''''''react paginataion end'''''''''''''''''}
-  console.log(category);
+  // console.log(category);
+  setDocumentTitle(`অক্ষর | ${category}`);
   useEffect(() => {
     fetch(`${apiBaseUrl}/news?category=${category}`) // Update the path to the JSON file
       .then((res) => res.json())
@@ -82,10 +85,10 @@ const AllNews = () => {
                 key={index}
                 className="flex xl:items-start items-center justify-between xl:flex-nowrap lg:flex-wrap md:flex-wrap flex-wrap gap-10 mx-auto "
               >
-                <div className=" w-full">
+                <div className=" w-full h-[280px] ">
                   <img
                     src={news?.image}
-                    className="w-full rounded-md h-[300px] "
+                    className="w-full rounded-md object-contain"
                     alt=""
                   />
                 </div>

@@ -42,7 +42,7 @@ const News = ({ category, index }) => {
           </p>
         </div>
       </div>
-      <hr className="mt-2 h-1" />
+      <hr className="hidden md:block   mt-2 h-2 bg-gray-500" />
       <div
         className={` flex flex-col  gap-6 p-5 ${
           index % 2 == 0 ? "md:flex-row" : "md:flex-row-reverse"
@@ -74,7 +74,7 @@ const News = ({ category, index }) => {
               )}/${news[0]?._id}`}
             >
               {" "}
-              <span className="  text-indigo-800 font-semibold    ">
+              <span className="  text-indigo-800 font-semibold hover:opacity-80 transition-all duration-200   ">
                 বিস্তারিত
               </span>
             </Link>
@@ -107,13 +107,15 @@ const News = ({ category, index }) => {
                            transform scale-100  hover:scale-110 transition-transform duration-300 "
                         />
                       </div>
-                      <p className=" text-black font-bold text-[13px] mt-0 hover:text-red-600 transition-all duration-200">
+                      <p className="newsTitle text-black font-bold text-[13px] mt-0 hover:text-red-600 transition-all duration-200">
                         {singleNews?.title}
                       </p>
                       <div className="mt-2 flex justify-end items-center gap-1 text-[12px] font-semibold text-gray-500">
                         {" "}
                         <Icon icon="mdi:clock-outline" />
-                        <p>{showDate(singleNews?.updatedAt)}</p>
+                        <p className="newsDate">
+                          {showDate(singleNews?.updatedAt)}
+                        </p>
                       </div>
                     </div>
                   </div>

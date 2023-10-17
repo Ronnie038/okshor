@@ -2,9 +2,10 @@ import image from "../../assets/Banner/Banner.png";
 import image2 from "../../assets/Banner/imag-2.png";
 import { Icon } from "@iconify/react";
 import image3 from "../../assets/Banner/image-3.jpg";
-// import Marquee from "react-fast-marquee";
-
+import { setDocumentTitle } from "../../Components/UseDocumentTitle/UseDocumentTitle";
 const About = () => {
+  setDocumentTitle(`অক্ষর | About`);
+
   return (
     <div className="">
       <div className="">

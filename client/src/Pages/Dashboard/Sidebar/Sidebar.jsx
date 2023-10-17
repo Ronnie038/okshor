@@ -3,6 +3,8 @@ import React from "react";
 import { Link, NavLink } from "react-router-dom";
 import { logOut } from "../../../api/auth";
 
+import logo from "../../../assets/Home/logo.png";
+
 const Sidebar = () => {
   const sideBar = [
     {
@@ -36,12 +38,12 @@ const Sidebar = () => {
       icon: "streamline:shopping-bag-hand-bag-2-shopping-bag-purse-goods-item-products",
     },
     {
-      title: "Add BcsNews",
+      title: "Add Bcs",
       link: "addbcsnews",
       icon: "streamline:shopping-bag-hand-bag-2-shopping-bag-purse-goods-item-products",
     },
     {
-      title: "BcsNewses",
+      title: "Bcs",
       link: "bcsnewses",
       icon: "streamline:shopping-bag-hand-bag-2-shopping-bag-purse-goods-item-products",
     },
@@ -82,9 +84,7 @@ const Sidebar = () => {
     <div className="bg-[#0C4E67] xl:min-h-screen xl:w-96 lg:w-full md:w-full w-full">
       <div className="xl:my-7 lg:my-5 md:my-5 my-5 mx-8">
         <Link to="/" className="">
-          <p className="logoFont text-[#03384D] text-center text-4xl font-bold">
-            <span className="text-[#3B95B0] logoFont">Urban</span>Utopia
-          </p>
+          <img src={logo} alt="" />
         </Link>
       </div>
       <ul className="nabLinkStyle space-y-4 mx-auto xl:w-full lg:w-[90%] md:w-[90%] w-[95%]">

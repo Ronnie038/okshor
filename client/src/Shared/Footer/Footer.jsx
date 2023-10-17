@@ -1,6 +1,7 @@
 import React from "react";
 import { Icon } from "@iconify/react";
 import logo2 from "../../assets/Footer/footer-logo.png";
+import companyLogoMade from "../../assets/Footer/wepoka.png";
 
 const Footer = () => {
   return (
@@ -11,13 +12,19 @@ const Footer = () => {
         </div>
         <div className="bg-transparent justify-center items-center flex ju gap-4 mt-4">
           <Icon
-            className="w-8 h-8 p-1 rounded-full  text-black"
+            className="w-8 h-8 p-1 bg-white rounded-full  text-black"
             icon="ri:facebook-fill"
           />
 
-          <Icon className="text-2xl" icon="mdi:linkedin" />
+          <Icon
+            className="w-8 h-8 p-1 bg-white rounded-full  text-black"
+            icon="mdi:linkedin"
+          />
 
-          <Icon className="w-8 h-6  rounded text-black  " icon="mdi:youtube" />
+          <Icon
+            className="w-8 h-8 p-1 bg-white rounded-full  text-black "
+            icon="mdi:youtube"
+          />
         </div>
 
         <div className="bg-transparent mt-4 text-center">
@@ -46,9 +53,10 @@ const Footer = () => {
           </div>
         </div>
       </div>
-      <p className="mt-2">
-        Copyright ©2023 Weero Digital. All rights reserved.
-      </p>
+      <div className="mt-2 flex justify-center items-center gap-1 text-white">
+        <p>Copyright ©2023 Develop by </p>
+        <img src={companyLogoMade} className="w-[60px] bg-transparent" alt="" />
+      </div>
     </footer>
   );
 };

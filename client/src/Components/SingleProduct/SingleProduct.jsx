@@ -5,18 +5,13 @@ import { Icon } from "@iconify/react";
 import { Link } from "react-router-dom";
 import "./SingleProduct.css";
 import { addToCart } from "../../store/slices/CartSlices";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 const SingleProduct = ({ product, index }) => {
-  //   const [products, setProducts] = useState([]);
-  //   useEffect(() => {
-  //     fetch("products.json")
-  //       .then((res) => res.json())
-  //       .then((data) => setProducts(data));
-  //   }, [products]);
-  const user = true;
+  const { user } = useSelector((state) => state.user);
+  // console.log(user);
   const dispatch = useDispatch();
 
   const [addAnimate, setAddAnimate] = useState([]);
@@ -41,7 +36,7 @@ const SingleProduct = ({ product, index }) => {
 
     setAddAnimate(newAddAnimate);
 
-    if (user) {
+    if (user?.email) {
       notify();
     }
 
@@ -49,9 +44,11 @@ const SingleProduct = ({ product, index }) => {
       setAddAnimate("");
     }, 1000);
   };
+
+  useEffect(() => {});
   return (
     <div>
-      <div className="relative product flex flex-col justify-between cursor-pointer lg:border p-3 rounded-md h-[360px] ">
+      <div className="relative product flex flex-col justify-between cursor-pointer lg:border p-5 rounded-md h-[420px] bg-[#eee]">
         <div className="p-1 transition-all duration-300 ">
           <img
             src={product?.image}
@@ -63,10 +60,12 @@ const SingleProduct = ({ product, index }) => {
 
         <div className="flex justify-between items-center gap-5 my-4 ">
           <div className="flex gap-3 items-center text-gray-500 ">
-            <p className=" text-[15px] line-through">
+            <p className=" text-[18px] line-through text-gray-500 font-semibold">
               {product?.regularPrice}৳
             </p>
-            <span className="text-[18px]">{product?.offerPrice}৳</span>
+            <span className="text-[20px] font-bold text-black">
+              {product?.offerPrice}৳
+            </span>
           </div>
           {/* <button className="product_btn hover:bg-secondary font-semibold  border border-black hover:border-primary text-black mt-5 rounded-md py-2 px-5 transition-all duration-300 ease-in-out">
             Add to Cart
@@ -87,7 +86,7 @@ const SingleProduct = ({ product, index }) => {
             <Icon
               icon="basil:shopping-cart-solid"
               onClick={(e) => handleAddToCart(product, index, e)}
-              className=" text-3xl hover:bg-red-600 transition-all duration-300 border border-white border-r-0 hover:border-secondary text-white pl-2 pr-5 py-2 w-full h-full rounded-l-xl"
+              className=" text-3xl hover:bg-red-600 transition-all duration-300 border border-white border-r-0 hover:border-secondary text-white pl-2 pr-5 py-2 w-full h-full rounded-l-xl bg-indigo-900"
             />
           </Link>
         </div>

@@ -32,6 +32,7 @@ const NewsBd = () => {
             <p className="text-indigo-900 font-bold mb-2 uppercase">
               Newest :{" "}
             </p>
+            <hr className="hidden md:block h-2 bg-gray-500" />
             <Link to="/shop">
               {" "}
               <div>

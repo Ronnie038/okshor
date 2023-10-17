@@ -61,7 +61,27 @@ const AddPdf = () => {
             </div>
             {/* Image box    */}
           </div>
-          <div className="w-full">
+          <div className="w-full mt-3">
+            <label className="font-semibold cursor-pointer" htmlFor="category">
+              Category
+            </label>{" "}
+            <br />
+            <select
+              required
+              name="category"
+              onChange={(e) => {
+                handleInput(e);
+              }}
+              className="my-2"
+              id=""
+            >
+              <option value="">Select Category</option>
+              <option value="সরকারী চাকরি">সরকারী চাকরি PDF</option>
+              <option value="বেসরকারী চাকরি">বেসরকারী চাকরি PDF</option>
+              <option value="এনজিও চাকরি">এনজিও চাকরি PDF</option>
+            </select>
+          </div>
+          <div className="w-full mt-5">
             <label className="font-semibold cursor-pointer" htmlFor="title">
               Pdf Title
             </label>{" "}

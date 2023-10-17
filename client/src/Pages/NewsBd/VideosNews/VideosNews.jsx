@@ -41,6 +41,7 @@ const VideosNews = ({ category }) => {
           </p>
         </div>
       </div>
+      <hr className="hidden md:block h-2 bg-gray-500" />
       <div className="flex flex-col md:flex-row gap-6 p-5 ">
         {" "}
         <div className="md:w-[50%] w-full p-4 ">
@@ -57,7 +58,7 @@ const VideosNews = ({ category }) => {
           <div className="my-2 flex justify-start items-center gap-1 text-[14px] font-semibold text-gray-500">
             {" "}
             <Icon icon="mdi:clock-outline" />
-            <p>{showDate(videosNews[0]?.updatedAt)}</p>
+            <p className="">{showDate(videosNews[0]?.updatedAt)}</p>
           </div>
           <p className="text-[15px] text-gray-500">
             <HTMLStringToComponent
@@ -101,13 +102,15 @@ const VideosNews = ({ category }) => {
                           height={"h-full w-full"}
                         ></YouTubeEmbed>
                       </div>
-                      <p className=" text-black font-bold text-[12px] mt-2 hover:text-red-600 transition-all duration-200">
+                      <p className="videosTitle text-black font-bold text-[12px] mt-2 hover:text-red-600 transition-all duration-200">
                         {singleNews?.title}
                       </p>
                       <div className="mt-2 flex justify-end items-center gap-1 text-[11px] font-semibold text-gray-500">
                         {" "}
                         <Icon icon="mdi:clock-outline" />
-                        <p>{showDate(singleNews?.updatedAt)}</p>
+                        <p className="videosDate">
+                          {showDate(singleNews?.updatedAt)}
+                        </p>
                       </div>
                     </div>
                   </div>
