@@ -1,5 +1,4 @@
 import React, { useEffect, useState, useRef } from "react";
-import UrbanUtopia from "../../Assets/logo/UrbanUtopia.png";
 import { Icon } from "@iconify/react";
 import logo from "../../assets/Home/logo.png";
 const Invoice = ({ order }) => {
@@ -24,7 +23,7 @@ const Invoice = ({ order }) => {
           <div className="text-right">
             <button
               onClick={handlePrint}
-              className="mt-4 flex justify-center gap-2 items-center ml-auto bg-[#006bfa] text-white px-4 py-2 rounded
+              className="mt-4 flex justify-center font-semibold gap-2 items-center ml-auto bg-indigo-900 text-white px-4 py-2 rounded
            "
             >
               Print Invoice <Icon icon="material-symbols:download" />
@@ -44,7 +43,13 @@ const Invoice = ({ order }) => {
           <div className="py-5 flex justify-between gap-5 border-b-2">
             <div>
               <h1 className="font-bold text-xl py-2">Bill From:</h1>
-              <p className="font-bold text-xl py-2 text-[#006bfa]">অক্ষর</p>
+              {/* <p className="font-bold text-xl p-2 text-white inline-block bg-gray-500">
+                অক্ষর
+              </p> */}
+              <div>
+                {" "}
+                <img src={logo} alt="logo" />
+              </div>
               <p>
                 10 Taher Tower Shopping Center,Shop#219,(1st Floor), <br />
                 Gulshan-2,Dhaka-1212., Dhaka, Bangladesh
@@ -74,40 +79,49 @@ const Invoice = ({ order }) => {
           </div>
 
           <div>
-            <h3 className="text-xl font-bold text-[#006bfa] inline py-2">
+            <h3 className="text-xl font-bold text-white uppercase  py-2 text-center bg-gray-500 ">
               Products
             </h3>
             <table className="w-full mt-4">
               <thead>
                 <tr>
-                  <th className="text-left">Name</th>
-                  <th className="text-left">Quantity</th>
-                  <th className="text-left">Price</th>
+                  <th className="text-center font-extrabold">Name</th>
+                  <th className="text-center font-extrabold">Quantity</th>
+                  <th className="text-right font-extrabold pr-5">Price</th>
                 </tr>
               </thead>
               <tbody>
                 {order?.products?.map((product) => (
                   <tr key={product.id}>
-                    <td className="text-left">{product.title}</td>
-                    <td className="text-left">{product.quantity}</td>
-                    <td className="text-left flex items-center">
+                    <td className="text-center font-bold ">{product.title}</td>
+                    <td className="text-center font-bold ">
+                      {product.quantity}
+                    </td>
+                    <td className="text-right pr-3 font-bold justify-end flex items-center">
                       {" "}
-                      <Icon icon="mdi:currency-bdt" />
                       {product.price}
+                      <Icon icon="mdi:currency-bdt" />
                     </td>
                   </tr>
                 ))}
               </tbody>
             </table>
           </div>
-          <p className="my-2 font-bold">Delivery Fee : {order.deliveryFee}</p>
-          <p className="my-2 font-bold">Vat/Tax 5% : {order.vat}</p>
-          <div className="mt-6 ">
-            <span className="text-lg  items-center bg-[#006bfa] inline-flex rounded-md  text-white px-3 py-2">
-              Total:
-              <Icon icon="mdi:currency-bdt" />
-              {order?.price}
-            </span>
+          <div className="flex justify-end">
+            {" "}
+            <div>
+              <p className="my-2 font-bold">
+                Delivery Fee : {order.deliveryFee}
+              </p>
+              <p className="my-2 font-bold">Vat/Tax 5% : {order.vat}</p>
+              <div className="mt-6 ">
+                <span className="text-lg font-bold items-center bg-gray-500 text-white inline-flex rounded-md   px-3 py-2">
+                  Total:
+                  <Icon icon="mdi:currency-bdt" />
+                  {order?.price}
+                </span>
+              </div>
+            </div>
           </div>
         </div>
       </div>

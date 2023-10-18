@@ -48,7 +48,7 @@ const SingleProduct = ({ product, index }) => {
   useEffect(() => {});
   return (
     <div>
-      <div className="relative product flex flex-col justify-between cursor-pointer lg:border p-5 rounded-md h-[420px] bg-[#eee]">
+      <div className="relative product flex flex-col justify-between cursor-pointer lg:border p-5 rounded-md h-[430px] bg-[#eee]">
         <div className="p-1 transition-all duration-300 ">
           <img
             src={product?.image}
@@ -56,10 +56,12 @@ const SingleProduct = ({ product, index }) => {
             alt="Book 1"
           />
         </div>
-        <h3 className="text-sm font-semibold mt-3 ">{product?.title}</h3>
+        <h3 className="text-sm font-semibold mt-3 text-center ">
+          {product?.title}
+        </h3>
 
         <div className="flex justify-between items-center gap-5 my-4 ">
-          <div className="flex gap-3 items-center text-gray-500 ">
+          <div className="flex gap-3 items-center justify-around text-gray-500 w-full">
             <p className=" text-[18px] line-through text-gray-500 font-semibold">
               {product?.regularPrice}৳
             </p>
@@ -67,19 +69,16 @@ const SingleProduct = ({ product, index }) => {
               {product?.offerPrice}৳
             </span>
           </div>
-          {/* <button className="product_btn hover:bg-secondary font-semibold  border border-black hover:border-primary text-black mt-5 rounded-md py-2 px-5 transition-all duration-300 ease-in-out">
+        </div>
+        <div className="flex justify-center items-center w-full">
+          {" "}
+          <Link
+            to={user ? "" : "/login"}
+            onClick={(e) => handleAddToCart(product, index, e)}
+            className="px-3 py-2 border w-full bg-indigo-900 hover:bg-red-600 font-semibold text-white transition-all text-center duration-300 rounded-md text-[11px]"
+          >
             Add to Cart
-          </button> */}
-          <div className="flex justify-center items-center">
-            {" "}
-            <Link
-              to={user ? "" : "/login"}
-              onClick={(e) => handleAddToCart(product, index, e)}
-              className="px-3 py-2 md:py-1 md:px-1 border bg-indigo-900 hover:bg-red-600 font-semibold text-white transition-all duration-300 rounded-md text-sm"
-            >
-              Add to Cart
-            </Link>
-          </div>
+          </Link>
         </div>
         <div className="flex productCart gap-5 flex-col absolute right-0 top-28">
           <Link to="">
