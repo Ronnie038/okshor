@@ -5,7 +5,7 @@ import companyLogoMade from "../../assets/Footer/wepoka.png";
 
 const Footer = () => {
   return (
-    <footer className="bg-black    mt-12  ">
+    <footer className="bg-black opacity-95    mt-12  ">
       {/* <div className="w-1/3 mx-auto  text-center  bg-transparent">
         <div className="bg-transparent flex justify-center items-center ">
           <img className="bg-transparent mt-4 text-white " src={logo2} alt="" />
