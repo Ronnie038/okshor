@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import HTMLStringToComponent from "../../../Components/HTMLStringToComponent/HTMLStringToComponent";
 import { setDocumentTitle } from "../../../Components/UseDocumentTitle/UseDocumentTitle";
+import { setTimeformat } from "../../../api/setTimeFormat";
 
 const apiBaseUrl = import.meta.env.VITE_REACT_APP_API_URL;
 const SingleNewsDetails = () => {
@@ -12,14 +13,6 @@ const SingleNewsDetails = () => {
   const [newsRelated, setNewsRelated] = useState([]);
   setDocumentTitle(`অক্ষর | ${news?.title}`);
 
-  const showDate = (updatedAt) => {
-    let postDate = new Date(updatedAt);
-    const day = postDate.getDate(); // 13
-    const month = postDate.toLocaleString("en-US", { month: "long" }); // Months are 0-based, so add 1 to get the correct month (10 for October)
-    const year = postDate.getFullYear();
-
-    return `${day} ${month} ${year}`;
-  };
   useEffect(() => {
     fetch(`${apiBaseUrl}/news?category=${news?.category}`)
       .then((res) => res.json())
@@ -53,9 +46,12 @@ const SingleNewsDetails = () => {
               />
             </div>
             <div className="w-full mt-5">
-              <h2 className="text-3xl mb-3 leading-normal font-medium">
-                {news.title}
-              </h2>
+              <div className="flex justify-between items-center">
+                <h2 className="text-3xl mb-3 leading-normal font-medium">
+                  {news.title}
+                </h2>
+                <p>{setTimeformat(news?.updatedAt)}</p>
+              </div>
               <hr className="mb-5" />
               <p className="leading-7">{news.description}</p>
               <HTMLStringToComponent htmlString={news?.mainDescription} />
@@ -88,7 +84,7 @@ const SingleNewsDetails = () => {
                     <div className="p-2 flex flex-col justify-between">
                       <p className="text-[11px]">{news.title}</p>
                       <p className="text-[10px] text-right mt-1">
-                        {showDate(news.updatedAt)}
+                        {setTimeformat(news.updatedAt)}
                       </p>
                     </div>
                   </div>

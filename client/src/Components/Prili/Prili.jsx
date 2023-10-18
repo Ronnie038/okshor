@@ -1,15 +1,8 @@
-import React from "react";
+import { setTimeformat } from "../../api/setTimeFormat";
 import { setDocumentTitle } from "../UseDocumentTitle/UseDocumentTitle";
+//
 
 const Prili = ({ data }) => {
-  const showDate = (createdAt) => {
-    let postDate = new Date(createdAt);
-    const day = postDate.getDate(); // 13
-    const month = postDate.toLocaleString("en-US", { month: "long" }); // Months are 0-based, so add 1 to get the correct month (10 for October)
-    const year = postDate.getFullYear();
-
-    return `${day} ${month} ${year}`;
-  };
   setDocumentTitle(`অক্ষর | ${data[0]?.subcategory}`);
 
   console.log(data);
@@ -54,7 +47,7 @@ const Prili = ({ data }) => {
               <div className="p-2 flex flex-col justify-between">
                 <p className="text-[11px]">{news.title}</p>
                 <p className="text-[10px] text-right">
-                  {showDate(news.createdAt)}
+                  {setTimeformat(news.createdAt)}
                 </p>
               </div>
             </div>

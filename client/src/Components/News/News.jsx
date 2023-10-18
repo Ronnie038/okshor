@@ -5,18 +5,10 @@ import bgTitle from "../../assets/bgtitle.png";
 import { Icon } from "@iconify/react";
 import { useDispatch } from "react-redux";
 import { setLoadingState } from "../../store/slices/loadingSlices";
+import { setTimeformat } from "../../api/setTimeFormat";
 const apiBaseUrl = import.meta.env.VITE_REACT_APP_API_URL;
 const News = ({ category, index }) => {
   const [news, setNews] = useState([]);
-
-  const showDate = (updatedAt) => {
-    let postDate = new Date(updatedAt);
-    const day = postDate.getDate(); // 13
-    const month = postDate.toLocaleString("en-US", { month: "long" }); // Months are 0-based, so add 1 to get the correct month (10 for October)
-    const year = postDate.getFullYear();
-
-    return `${day} ${month} ${year}`;
-  };
 
   useEffect(() => {
     fetch(`${apiBaseUrl}/news?category=${category}`)
@@ -64,7 +56,7 @@ const News = ({ category, index }) => {
           <div className="my-2 flex justify-start items-center gap-1 text-[14px] font-semibold text-gray-500">
             {" "}
             <Icon icon="mdi:clock-outline" />
-            <p>{showDate(news[0]?.updatedAt)}</p>
+            <p>{setTimeformat(news[0]?.updatedAt)}</p>
           </div>
           <p className="text-[15px] text-gray-500">
             {news[0]?.description.slice(0, 200) + "..."}
@@ -114,7 +106,7 @@ const News = ({ category, index }) => {
                         {" "}
                         <Icon icon="mdi:clock-outline" />
                         <p className="newsDate">
-                          {showDate(singleNews?.updatedAt)}
+                          {setTimeformat(singleNews?.updatedAt)}
                         </p>
                       </div>
                     </div>

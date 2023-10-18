@@ -8,20 +8,12 @@ import { Icon } from "@iconify/react";
 import { Link } from "react-router-dom";
 import YouTubeEmbed from "../../../Components/YouTubeEmbed/YouTubeEmbed";
 import HTMLStringToComponent from "../../../Components/HTMLStringToComponent/HTMLStringToComponent";
+import { setTimeformat } from "../../../api/setTimeFormat";
 
 const apiBaseUrl = import.meta.env.VITE_REACT_APP_API_URL;
 
 const VideosNews = ({ category }) => {
   const [videosNews, setVideosNews] = useState([]);
-
-  const showDate = (updatedAt) => {
-    let postDate = new Date(updatedAt);
-    const day = postDate.getDate(); // 13
-    const month = postDate.toLocaleString("en-US", { month: "long" }); // Months are 0-based, so add 1 to get the correct month (10 for October)
-    const year = postDate.getFullYear();
-
-    return `${day} ${month} ${year}`;
-  };
 
   useEffect(() => {
     fetch(`${apiBaseUrl}/news?category=${category}`)
@@ -32,17 +24,17 @@ const VideosNews = ({ category }) => {
 
   return (
     <div>
-      <div className={`${"flex justify-start"}`}>
+      <div className={`${"flex justify-end mt-10"}`}>
         <div className="relative inline-block max-w-content">
           {" "}
-          <img src={bgTitle} alt="" className="w-[80%]" />
+          <img src={bgTitle} alt="" className="w-full" />
           <p className="absolute top-[30%] left-[15%] text-white font-bold text-[20px]">
             {videosNews[0]?.categoryTitle}
           </p>
         </div>
       </div>
-      <hr className="hidden md:block h-2 bg-gray-500" />
-      <div className="flex flex-col md:flex-row gap-6 p-5 ">
+      <hr className="hidden md:block h-2 bg-gray-500 mt-2" />
+      <div className="flex flex-col md:flex-row-reverse gap-6 p-5 ">
         {" "}
         <div className="md:w-[50%] w-full p-4 ">
           {" "}
@@ -58,7 +50,7 @@ const VideosNews = ({ category }) => {
           <div className="my-2 flex justify-start items-center gap-1 text-[14px] font-semibold text-gray-500">
             {" "}
             <Icon icon="mdi:clock-outline" />
-            <p className="">{showDate(videosNews[0]?.updatedAt)}</p>
+            <p className="">{setTimeformat(videosNews[0]?.updatedAt)}</p>
           </div>
           <p className="text-[15px] text-gray-500">
             <HTMLStringToComponent
@@ -109,7 +101,7 @@ const VideosNews = ({ category }) => {
                         {" "}
                         <Icon icon="mdi:clock-outline" />
                         <p className="videosDate">
-                          {showDate(singleNews?.updatedAt)}
+                          {setTimeformat(singleNews?.updatedAt)}
                         </p>
                       </div>
                     </div>
