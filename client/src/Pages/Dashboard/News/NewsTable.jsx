@@ -45,11 +45,11 @@ const NewsTable = ({ newses, setRefetch }) => {
 							<th scope='col' className='px-6 py-3'>
 								News Id
 							</th>
-							{!newses[0]?.video && (
+							{/* {!newses[0]?.video && (
 								<th scope='col' className='px-6 py-3'>
 									Image
 								</th>
-							)}
+							)} */}
 
 							<th scope='col' className='px-6 py-3'>
 								Title
@@ -78,7 +78,7 @@ const NewsTable = ({ newses, setRefetch }) => {
 								>
 									{news._id}
 								</th>
-								{!news.video && (
+								{/* {!news.video && (
 									<td className='px-6 py-4'>
 										<div className='flex gap-1'>
 											<div className='h-16 w-16 rounded-md overflow-hidden'>
@@ -90,7 +90,7 @@ const NewsTable = ({ newses, setRefetch }) => {
 											</div>
 										</div>
 									</td>
-								)}
+								)} */}
 								<td className='px-6 py-4'>{news.title}</td>
 								<td className='px-6 py-4'>{news.categoryTitle}</td>
 

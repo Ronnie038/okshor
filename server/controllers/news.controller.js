@@ -50,6 +50,7 @@ exports.getNews = async (req, res) => {
 			data: news,
 		});
 	} catch (error) {
+		console.log(error.message);
 		res.status(500).json({
 			success: false,
 			message: 'something went wrong please try again',

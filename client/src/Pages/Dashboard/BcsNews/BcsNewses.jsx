@@ -1,10 +1,7 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import { useDispatch, useSelector } from 'react-redux';
-import {
-	fetchBcsNewses,
-	getFilteredBcsNewses,
-} from '../../../store/slices/bcsNewsSlices';
+import { fetchBcsNewses } from '../../../store/slices/bcsNewsSlices';
 import BcsNewsTable from './BcsNewsTable';
 import { bcsCategory } from '../../../api/fakeData/fakedata';
 
@@ -13,7 +10,7 @@ const BcsNewses = () => {
 	const { status, subcategory, data } = useSelector((state) => state.bcsNewses);
 
 	const [refetch, setRefetch] = useState(false);
-	const [category, setCategory] = useState(bcsCategory[0].category);
+	const [category, setCategory] = useState('all');
 
 	useEffect(() => {
 		// Fetch bcsNewses when the category changes
@@ -39,6 +36,7 @@ const BcsNewses = () => {
 						className='outline-none p-2 border'
 						onChange={(e) => setCategory(e.target.value)}
 					>
+						<option value='all'>সব খবর</option>
 						{bcsCategory.map((item) => (
 							<option
 								key={item.category}
@@ -48,7 +46,6 @@ const BcsNewses = () => {
 								{item.category}
 							</option>
 						))}
-						<option value='all'>All</option>
 					</select>
 				</div>
 			</div>
