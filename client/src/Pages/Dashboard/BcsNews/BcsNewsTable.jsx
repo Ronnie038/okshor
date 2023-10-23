@@ -1,4 +1,5 @@
 import { Icon } from '@iconify/react';
+import { Link } from 'react-router-dom';
 
 import swal from 'sweetalert';
 
@@ -57,6 +58,9 @@ const BcsNewsTable = ({ newses, setRefetch }) => {
 							<th scope='col' className='px-6 py-3'>
 								Subcateogry
 							</th>
+							<th scope='col' className='px-6 py-3'>
+								Update
+							</th>
 
 							<th scope='col' className='px-6 py-3'>
 								Delete
@@ -90,6 +94,11 @@ const BcsNewsTable = ({ newses, setRefetch }) => {
 								<td className='px-6 py-4'>{news.category}</td>
 								<td className='px-6 py-4'>{news.subcategory}</td>
 
+								<td className='px-6 py-4'>
+									<Link to={`/dashboard/updateBcsNews/${news._id}`}>
+										<Icon icon='bx:edit' className='text-3xl text-green-700' />
+									</Link>
+								</td>
 								<td className='px-6 py-4'>
 									<Icon
 										onClick={() => handleDelete(news._id)}

@@ -7,7 +7,7 @@ import { useForm } from "react-hook-form";
 import { Fade } from "react-awesome-reveal";
 import { facebookLogin, googleLogin, signIn } from "../../api/auth";
 import { useDispatch } from "react-redux";
-import logo from "../../assets/Home/logo.png";
+import logo from "../../assets/logo/main_logo.png";
 import Loading from "../../Components/Loading/Loading";
 import toast from "react-hot-toast";
 import { addUser } from "../../store/slices/UserSlices";
@@ -76,7 +76,7 @@ const LoginPage = () => {
                   <div>
                     <p>Welcome to</p>
                     <Link to="/" className="">
-                      <img src={logo} alt="" className="mt-3 w-[30%]" />
+                      <img src={logo} alt="" className="mt-3 w-[30%] -ml-2" />
                     </Link>
                   </div>
 
@@ -119,15 +119,15 @@ const LoginPage = () => {
                   <div className="form-control">
                     <button
                       type="submit"
-                      className=" bg-[#0C4E67] w-full text-white mt-4 normal-case text-[16px] h-16 rounded-none hover:bg-[#3B95B0]"
+                      className=" bg-[#0C4E67] w-full text-white mt-4 normal-case text-[16px] h-16 duration-300 rounded-none hover:bg-[#3B95B0]"
                     >
                       {" "}
                       {loading ? <Loading /> : "Log In"}
                     </button>
-                    <label className="label flex lg:justify-end md:justify-end justify-center">
+                    <label className="mt-2 flex lg:justify-end md:justify-end justify-center ">
                       <Link
                         to="/user/forgetPasswordRequest"
-                        className="text-[#1877F2]"
+                        className="text-[#1877F2] hover:text-[#E62C29] duration-300"
                       >
                         Forgot password?
                       </Link>
@@ -136,7 +136,10 @@ const LoginPage = () => {
                   <div className="text-center lg:px-20">
                     <p className="text-[17px]">
                       New Member?{" "}
-                      <Link to="/signUp" className=" text-[#1877F2]">
+                      <Link
+                        to="/signUp"
+                        className=" text-[#1877F2] inline-block hover:translate-x-2 duration-500"
+                      >
                         Registration Now
                       </Link>
                     </p>
@@ -145,10 +148,10 @@ const LoginPage = () => {
                     </div>
                   </div>
                   <div className="flex flex-wrap gap-5 justify-between  my-8">
-                    <Link className=" p-2 rounded-none w-full lg:w-auto border border-black">
+                    <Link className="btn bg-transparent hover:bg-[#E5E6E6] duration-300 rounded-none w-full lg:w-auto border border-black">
                       <div
                         onClick={() => googleLogin()}
-                        className="flex items-center justify-center gap-2 p-1"
+                        className="flex items-center justify-center gap-2 p-2"
                       >
                         <Icon
                           icon="entypo-social:google"
@@ -157,7 +160,7 @@ const LoginPage = () => {
                         <span className="normal-case">Log in with Google</span>
                       </div>
                     </Link>
-                    <Link className="btn bg-transparent border-1 rounded-none w-full lg:w-auto border border-black">
+                    <Link className="btn bg-transparent hover:bg-[#E5E6E6] duration-300 rounded-none w-full lg:w-auto border border-black">
                       <div
                         onClick={() => facebookLogin()}
                         className="flex items-center justify-center gap-2 p-2"

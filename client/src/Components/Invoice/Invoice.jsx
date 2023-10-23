@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useRef } from "react";
 import { Icon } from "@iconify/react";
-import logo from "../../assets/Home/logo.png";
+import logo from "../../assets/logo/main_logo.png";
 const Invoice = ({ order }) => {
   var [date, setDate] = useState(new Date());
 
@@ -33,7 +33,7 @@ const Invoice = ({ order }) => {
         <div className="" id="print-section" ref={invoiceRef}>
           <div className="py-5 flex justify-between gap-5 border-b-2">
             <div>
-              <img src={logo} alt="" className="md:w-80 w-60" />
+              <img src={logo} alt="" className="md:w-80 w-60 -ml-6" />
               <div className="pt-5 font-bold">
                 {/* <p> Time : {date.toLocaleTimeString()}</p> */}
                 <p> Date : {date.toLocaleDateString()}</p>
@@ -48,13 +48,13 @@ const Invoice = ({ order }) => {
               </p> */}
               <div>
                 {" "}
-                <img src={logo} alt="logo" />
+                <img src={logo} alt="logo" className="w-40 -ml-3" />
               </div>
               <p>
                 10 Taher Tower Shopping Center,Shop#219,(1st Floor), <br />
                 Gulshan-2,Dhaka-1212., Dhaka, Bangladesh
               </p>
-              <p>88 01764875977</p>
+              <p>0123542235</p>
             </div>
             <div>
               <h1 className="font-bold text-xl py-2">Bill To:</h1>
@@ -115,7 +115,7 @@ const Invoice = ({ order }) => {
               </p>
               <p className="my-2 font-bold">Vat/Tax 5% : {order.vat}</p>
               <div className="mt-6 ">
-                <span className="text-lg font-bold items-center bg-gray-500 text-white inline-flex rounded-md   px-3 py-2">
+                <span className="text-lg font-bold items-center bg-green-300 text-black inline-flex rounded-md   px-3 py-2">
                   Total:
                   <Icon icon="mdi:currency-bdt" />
                   {order?.price}

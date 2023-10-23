@@ -1,7 +1,8 @@
 import React from "react";
 import { Icon } from "@iconify/react";
-import logo2 from "../../assets/Footer/footer-logo.png";
+import logo2 from "../../assets/logo/main_logo_2.png";
 import companyLogoMade from "../../assets/Footer/wepoka.png";
+import { Link } from "react-router-dom";
 
 const Footer = () => {
   return (
@@ -55,9 +56,9 @@ const Footer = () => {
       </div> */}
       <div className="flex flex-col md:flex-row gap-3 justify-around p-8 md:py-10 md:pl-16  text-white ">
         <div className="w-full">
-          <div className="bg-transparent flex justify-center items-center ">
+          <div className="bg-transparent ">
             <img
-              className="bg-transparent mt-4 text-white "
+              className="bg-transparent mt-4 text-white w-48"
               src={logo2}
               alt=""
             />
@@ -69,20 +70,26 @@ const Footer = () => {
             expedita odio. Omnis porro sequi suscipit perspiciatis!
           </p>
           <div className="bg-transparent justify-center items-center flex ju gap-4 mt-4">
-            <Icon
-              className="w-8 h-8 p-1 bg-white rounded-full  text-black"
-              icon="ri:facebook-fill"
-            />
+            <a href="#" target="_blank" rel="noopener noreferrer">
+              <Icon
+                className="w-8 h-8 p-1 bg-white rounded-full  text-[#1F2659] hover:bg-[#1F2659] hover:text-white duration-500"
+                icon="ri:facebook-fill"
+              />
+            </a>
 
-            <Icon
-              className="w-8 h-8 p-1 bg-white rounded-full  text-black"
-              icon="mdi:linkedin"
-            />
+            <a href="#" target="_blank" rel="noopener noreferrer">
+              <Icon
+                className="w-8 h-8 p-1 bg-white rounded-full  text-[#1F2659] hover:bg-[#1F2659] hover:text-white duration-500"
+                icon="mdi:linkedin"
+              />
+            </a>
 
-            <Icon
-              className="w-8 h-8 p-1 bg-white rounded-full  text-black "
-              icon="mdi:youtube"
-            />
+            <a href="#" target="_blank" rel="noopener noreferrer">
+              <Icon
+                className="w-8 h-8 p-1 bg-white rounded-full  text-[#1F2659] hover:bg-[#1F2659] hover:text-white duration-500 "
+                icon="mdi:youtube"
+              />
+            </a>
           </div>
         </div>
         <div className="w-full  ">
@@ -94,15 +101,38 @@ const Footer = () => {
                 <span className="">
                   1600 Pennsylvania Ave NW, Washington, DC 20500
                 </span>{" "}
-                <br /> <span className="">Phone</span>: +990 (312) 123 45 67{" "}
-                <br /> <span className=" ">Email</span>: hello@domain.com
+                <br />
+                <a
+                  href="tel:+"
+                  className="hover:translate-x-2 duration-500 inline-block"
+                >
+                  <span className="">Phone</span>: +990 (312) 123 45 67{" "}
+                </a>
+                <br />{" "}
+                <a
+                  href="mailto:"
+                  className="hover:translate-x-2 duration-500 inline-block"
+                >
+                  <span className=" ">Email</span>: hello@domain.com
+                </a>
               </p>
               <br />
               <p className="">
                 <span className=" ">Address</span>: 1600 Pennsylvania Ave NW,
-                Washington, DC 20500 <br /> <span className=" ">Phone</span>:
-                +990 (312) 123 45 67 <br /> <span className=" ">Email</span>:
-                hello@domain.com
+                Washington, DC 20500 <br />
+                <a
+                  href="tel:+"
+                  className="hover:translate-x-2 duration-500 inline-block"
+                >
+                  <span className="">Phone</span>: +990 (312) 123 45 67
+                </a>
+                <br />
+                <a
+                  href="mailto:"
+                  className="hover:translate-x-2 duration-500 inline-block"
+                >
+                  <span className=" ">Email</span>: hello@domain.com
+                </a>
               </p>
               <br />
             </div>
@@ -111,19 +141,31 @@ const Footer = () => {
         <div className="w-full ">
           <div className="md:ml-12 text-center md:text-start">
             <h1 className="text-3xl mb-3 font-bold">Services</h1>
-            <div>
-              <p>Branding & identity</p>
-              <p>Web design & Devlopment</p>
-              <p>Mobile app Devlopment</p>
-              <p>UI & UX Designing</p>
-              <p>Digital Marketing</p>
-            </div>
+
+            <ul>
+              <li className="hover:translate-x-2 duration-500">
+                <Link to="">Bookshop</Link>
+              </li>
+              <li className="hover:translate-x-2 duration-500">
+                <Link to="">Job Circular</Link>
+              </li>
+            </ul>
           </div>
         </div>
       </div>
-      <div className="mt-2  flex justify-center border-t-2 border-white items-center gap-1 text-white">
-        <p>Copyright ©2023 Develop by </p>
-        <img src={companyLogoMade} className="w-[60px] bg-transparent" alt="" />
+      <div className="flex justify-center border-t border-gray-500 items-center gap-1 text-white">
+        <p className="text-sm">Copyright ©2023 Develop by </p>
+        <a
+          href="https://weepoka.com/"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <img
+            src={companyLogoMade}
+            className="w-[60px] bg-transparent hover:scale-110 duration-300 hover:translate-x-2"
+            alt=""
+          />
+        </a>
       </div>
     </footer>
   );

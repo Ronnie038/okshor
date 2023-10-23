@@ -48,7 +48,14 @@ const AddNews = () => {
 		formDataObj.append('images', selectedImages[0]);
 
 		// console.log(formDataObj);
-		createNewsService(formDataObj, setLoading, toast, form, setSelectedImages);
+		createNewsService(
+			formDataObj,
+			setLoading,
+			toast,
+			form,
+			setSelectedImages,
+			setMainDescription
+		);
 	};
 
 	const handleImageChange = (e) => {
@@ -81,7 +88,7 @@ const AddNews = () => {
 			<form action='' onSubmit={handleSubmit}>
 				<div>
 					<div className='w-full'>
-						<label className='font-semibold cursor-pointer' htmlFor='title'>
+						<label className='font-bold cursor-pointer' htmlFor='title'>
 							Title
 						</label>{' '}
 						<br />
@@ -90,17 +97,14 @@ const AddNews = () => {
 							className='border w-full border-purple-200 mt-3 p-3 '
 							type='text'
 							name='title'
-							placeholder='গরুর চিকিৎসা কাজে কেনা গাড়ির ব্যাক্তিগত ব্যাবহার'
+							placeholder='আপনার খবরের টাইটেল দেন...'
 							id='title'
 							required={true}
 						/>
 					</div>
-					<div className='flex m-5 font-bold'>
-						<div className='w-full mt-3'>
-							<label
-								className='font-semibold cursor-pointer'
-								htmlFor='category'
-							>
+					<div className='flex mt-5 font-bold'>
+						<div className='w-full mt-3 flex gap-5'>
+							<label className='font-bold cursor-pointer' htmlFor='category'>
 								Category
 							</label>{' '}
 							<br />
@@ -111,7 +115,7 @@ const AddNews = () => {
 									handleInput(e);
 									setSelectedCategoryIndex(e.target.selectedIndex);
 								}}
-								className='mb-2'
+								className='mb-2 border py-1 px-5 font-normal'
 								id=''
 							>
 								<option value=''>Select Category</option>
@@ -128,7 +132,7 @@ const AddNews = () => {
 						<div className='w-full mt-5'>
 							<div className='flex  gap-6'>
 								<div className='w-full'>
-									<label className=' font-semibold cursor-pointer'>Image</label>{' '}
+									<label className=' font-bold cursor-pointer'>Image</label>{' '}
 									<br />
 									<input
 										autoComplete='off'
@@ -170,7 +174,7 @@ const AddNews = () => {
 
 					{isVideo && (
 						<div className='w-full'>
-							<label className='font-semibold cursor-pointer' htmlFor='title'>
+							<label className='font-bold cursor-pointer' htmlFor='title'>
 								Video Link
 							</label>{' '}
 							<br />
@@ -191,7 +195,7 @@ const AddNews = () => {
 					<div>
 						<label
 							htmlFor='shortDesc'
-							className=' font-semibold  cursor-pointer'
+							className='cursor-pointer my-2 inline-block font-bold'
 						>
 							Short Description
 						</label>{' '}
@@ -207,8 +211,9 @@ const AddNews = () => {
 							placeholder='write here ...'
 						></textarea>
 					</div>
+
 					<div className='mt-6'>
-						<label className=' font-semibold  cursor-pointer'>
+						<label className=' font-bold  cursor-pointer'>
 							Main Description
 						</label>{' '}
 						<br />

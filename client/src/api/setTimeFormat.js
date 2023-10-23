@@ -29,7 +29,7 @@ const setTimeformat = (givenTime) => {
       day: "numeric",
       month: "long",
     });
-    console.log(formatedDate);
+    // console.log(formatedDate);
   }
   return formatedDate;
 };

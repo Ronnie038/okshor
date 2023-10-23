@@ -134,7 +134,7 @@ exports.logOut = (req, res) => {
 exports.resetPassword = async (req, res, next) => {
 	try {
 		const email = req.body.email;
-
+		console.log(email);
 		const user = await User.findOne({ email });
 		if (!user) {
 			return res.status(401).json({

@@ -8,7 +8,7 @@ import Swal from "sweetalert2";
 import { Fade } from "react-awesome-reveal";
 import { userRegister } from "../../api/auth";
 // import toast from "react-hot-toast";
-import logo from "../../assets/Home/logo.png";
+import logo from "../../assets/logo/main_logo.png";
 import Loading from "../../Components/Loading/Loading";
 
 const SignUp = () => {
@@ -55,7 +55,7 @@ const SignUp = () => {
                   <div>
                     <p>Welcome to</p>
                     <Link to="/" className="">
-                      <img src={logo} alt="" className="mt-3 w-[30%]" />
+                      <img src={logo} alt="" className="mt-3 w-[30%] -ml-2" />
                     </Link>
                   </div>
                   <div className="form-control">
@@ -189,7 +189,7 @@ const SignUp = () => {
                     <button
                       disabled={loading}
                       type="submit"
-                      className="btn bg-[#0C4E67] w-full border p-2 text-white mt-3 normal-case text-[16px] h-16 rounded-none hover:bg-[#3B95B0]"
+                      className="btn bg-[#0C4E67] duration-300 w-full border p-2 text-white mt-3 normal-case text-[16px] h-16 rounded-none hover:bg-[#3B95B0]"
                     >
                       {loading ? <Loading /> : "Sign Up"}
                     </button>
@@ -197,7 +197,10 @@ const SignUp = () => {
                   <div className="text-center lg:px-20">
                     <p className="text-[17px]">
                       Already Member?{" "}
-                      <Link to="/login" className=" text-[#1877F2]">
+                      <Link
+                        to="/login"
+                        className=" text-[#1877F2] hover:translate-x-2 duration-300 inline-block"
+                      >
                         Log in Now
                       </Link>
                     </p>
@@ -206,8 +209,8 @@ const SignUp = () => {
                     </div>
                   </div>
                   <div className="flex flex-wrap gap-5 justify-between  my-8">
-                    <Link className="btn bg-transparent rounded-none w-full lg:w-auto border border-black mx-auto">
-                      <div className="flex items-center justify-center gap-2 p-3 mx-auto">
+                    <Link className="btn bg-transparent hover:bg-[#E5E6E6] duration-300 rounded-none w-full lg:w-auto border border-black">
+                      <div className="flex items-center justify-center gap-2 p-2">
                         <Icon
                           icon="entypo-social:google"
                           className="text-white bg-red-600 rounded-full p-2 text-3xl"
@@ -215,8 +218,8 @@ const SignUp = () => {
                         <span className="normal-case">Sing Up with Google</span>
                       </div>
                     </Link>
-                    <Link className="btn bg-transparent border-1 rounded-none w-full lg:w-auto border border-black mx-auto">
-                      <div className="flex items-center justify-center gap-2 p-3 ">
+                    <Link className="btn bg-transparent hover:bg-[#E5E6E6] duration-300 rounded-none w-full lg:w-auto border border-black">
+                      <div className="flex items-center justify-center gap-2 p-2">
                         <Icon
                           icon="ic:baseline-facebook"
                           className="text-3xl text-[#1877F2]"

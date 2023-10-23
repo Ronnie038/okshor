@@ -3,7 +3,7 @@ import React from "react";
 import { Link, NavLink } from "react-router-dom";
 import { logOut } from "../../../api/auth";
 
-import logo from "../../../assets/Home/logo.png";
+import logo from "../../../assets/logo/main_logo_2.png";
 
 const Sidebar = () => {
   const sideBar = [
@@ -84,7 +84,7 @@ const Sidebar = () => {
     <div className="bg-[#0C4E67] xl:min-h-screen xl:w-96 lg:w-full md:w-full w-full">
       <div className="xl:my-7 lg:my-5 md:my-5 my-5 mx-8">
         <Link to="/" className="">
-          <img src={logo} alt="" />
+          <img src={logo} alt="" className="w-48 -ml-6" />
         </Link>
       </div>
       <ul className="nabLinkStyle space-y-4 mx-auto xl:w-full lg:w-[90%] md:w-[90%] w-[95%]">

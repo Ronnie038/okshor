@@ -46,6 +46,9 @@ import BcsNewses from '../Pages/Dashboard/BcsNews/BcsNewses';
 import Newses from '../Pages/Dashboard/News/Newses';
 import AdminPdf from '../Pages/Dashboard/AdminPdf/AdminPdf';
 import UpdateNews from '../Pages/Dashboard/News/UpdateNews';
+import ForgetPassword from '../Pages/ForgetPassword/ForgetPassword';
+import ForgetPasswordRequest from '../Pages/ForgetPassword/ForgetPasswordRequest';
+import UpdateBcsNews from '../Pages/Dashboard/BcsNews/UpdateBcs';
 // import Pdf from "../Pages/Dashboard/Pdf/Pdf";
 const router = createBrowserRouter([
 	{
@@ -128,6 +131,14 @@ const router = createBrowserRouter([
 				element: <SignUp />,
 			},
 			{
+				path: '/user/forget-password',
+				element: <ForgetPassword />,
+			},
+			{
+				path: '/user/forgetPasswordRequest',
+				element: <ForgetPasswordRequest />,
+			},
+			{
 				path: '/adedAddress',
 				element: <AdedAdress></AdedAdress>,
 			},
@@ -183,6 +194,10 @@ const router = createBrowserRouter([
 			{
 				path: 'addbcsnews',
 				element: <AddBcsNews />,
+			},
+			{
+				path: 'updateBcsNews/:id',
+				element: <UpdateBcsNews />,
 			},
 			{
 				path: 'bcsnewses',

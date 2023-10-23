@@ -5,7 +5,8 @@ const createNewsService = (
 	setLoading,
 	toast,
 	form,
-	selectedImages
+	selectedImages,
+	setMainDescription
 ) => {
 	const create = async () => {
 		const dataType = typeof formData;
@@ -33,6 +34,7 @@ const createNewsService = (
 				toast.success('service added');
 				form.reset();
 				selectedImages([]);
+				setMainDescription('');
 			}
 			const data = await res.json();
 

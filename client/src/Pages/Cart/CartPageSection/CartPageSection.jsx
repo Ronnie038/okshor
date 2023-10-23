@@ -109,46 +109,48 @@ const CartPageSection = () => {
                     <td className="border p-5 text-lg font-semibold">
                       Sub Total
                     </td>
-                    <td className="border p-5 text-lg font-semibold text-end">
-                      {subTotal.toFixed(2)}৳
+                    <td className="border p-5 text-lg font-semibold flex justify-end items-center ">
+                      {subTotal.toFixed(2)}
+                      <Icon icon="mdi:currency-bdt" />
                     </td>
                   </tr>
                   <tr>
                     <td className="border p-5 text-lg font-semibold">
                       Quantity
                     </td>
-                    <td className="border p-5 text-lg font-semibold text-end">
+                    <td className="border p-5 text-lg font-semibold flex justify-end items-center">
                       {products.length}
                     </td>
                   </tr>
                   <tr>
                     <td className="border p-5 text-lg font-semibold">Vat 5%</td>
-                    <td className="border p-5 text-lg font-semibold text-end">
-                      {subTotal * 0.05}৳
+                    <td className="border p-5 text-lg font-semibold flex justify-end items-center">
+                      {subTotal * 0.05} <Icon icon="mdi:currency-bdt" />
                     </td>
                   </tr>
                   <tr>
                     <td className="border p-5 text-lg font-semibold">
                       Delivery Charge
                     </td>
-                    <td className="border p-5 text-lg font-semibold text-end">
-                      {100}৳
+                    <td className="border p-5 text-lg font-semibold flex justify-end items-center">
+                      {100} <Icon icon="mdi:currency-bdt" />
                     </td>
                   </tr>
                   <tr>
                     <td className="border p-5 text-lg font-semibold">Total</td>
-                    <td className="border p-5 text-lg font-semibold text-end">
-                      {products.length > 0 ? total.toFixed(2) : 0}৳
+                    <td className="border p-5 text-lg font-semibold flex justify-end items-center">
+                      {products.length > 0 ? total.toFixed(2) : 0}{" "}
+                      <Icon icon="mdi:currency-bdt" />
                     </td>
                   </tr>
                 </tbody>
               </table>
             </div>
 
-            <div className="flex justify-center gap-5 mt-20">
+            <div className="flex justify-center items-center gap-5 mt-20">
               <Link
                 to="/women"
-                className="p-3 text-center rounded-none lg:w-52 h-14 text-xl bg-transparent border-2 hover:border-[#3B95B0] hover:text-[#3B95B0] hover:bg-transparent border-black normal-case"
+                className="px-5 py-2 text-center rounded-none  text-xl bg-transparent border hover:bg-[#3B95B0] hover:text-white hover:border-[#3B95B0] duration-300 border-black"
               >
                 Return Shop
               </Link>
@@ -163,10 +165,18 @@ const CartPageSection = () => {
                 <div>
                   {!user._id ? (
                     <>
-                      <p className="-mt-5">Please Login to proceed further</p>
-                      <Link to="/login" className="btn bg-red-400 text-white">
-                        Login
-                      </Link>
+                      <div className="flex items-center gap-5">
+                        <p className="text-red-600">
+                          Please Login to proceed further
+                        </p>
+                        <Link
+                          to="
+                          /login"
+                          className="bg-red-600 hover:bg-red-500 duration-300 text-white px-5 py-1"
+                        >
+                          Login
+                        </Link>
+                      </div>
                     </>
                   ) : (
                     <button

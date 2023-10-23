@@ -1,8 +1,8 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { Icon } from "@iconify/react";
 import { useSelector } from "react-redux";
-import logo from "../../assets/Home/logo.png";
+import logo from "../../assets/logo/main_logo.png";
 
 import { logOut } from "../../api/auth";
 import TopNavbar from "./TopNavbar/TopNavbar";
@@ -43,29 +43,37 @@ const Navbar = () => {
     setMenuOpen(!isMenuOpen);
   };
 
+  const activeLink =
+    "text-[#E52D27] uppercase font-bold transition-all duration-300 menu";
+  const normalLink =
+    "hover:text-[#E52D27] uppercase font-semibold transition-all duration-300 menu";
+
   return (
     <div className="">
       <TopNavbar></TopNavbar>
       <nav className="w-10/12 mx-auto flex  items-center lg:justify-between md:justify-between justify-around my-4 ">
         <Link to="/" className=" block">
-          <img
-            src={logo}
-            alt="okshar logo"
-            className="logo-img h-full w-full"
-          />
+          <img src={logo} alt="okshar logo" className="logo-img w-48" />
         </Link>
+
         <div className="lg:block hidden">
           <div className="lg:flex lg:flex-row  lg:gap-0 ">
             {Links?.map((link, index) => (
-              <p
-                key={index}
-                className="hover:text-[#E52D27] uppercase font-semibold transition-all duration-300 menu"
-              >
-                <NavLink to={link.href}>{link.text}</NavLink>
+              <p key={index}>
+                <NavLink
+                  to={link.href}
+                  className={({ isActive }) =>
+                    isActive ? activeLink : normalLink
+                  }
+                >
+                  {" "}
+                  {link.text}
+                </NavLink>
               </p>
             ))}
           </div>
         </div>
+
         <div
           className={`${
             isMenuOpen
@@ -100,27 +108,18 @@ const Navbar = () => {
             <li>
               {" "}
               {user._id && (
-                <div
+                <p
                   onClick={logOut}
-                  className="hover:text-sky-400 uppercase font-bold transition-all duration-300"
+                  className="hover:text-sky-400 uppercase font-bold transition-all duration-300 cursor-pointer"
                 >
                   Logout
-                </div>
+                </p>
               )}
             </li>
           </ul>
         </div>
+
         <div className="flex items-center lg:gap-5 justify-center gap-3">
-          {/* <div className='form-control relative lg:w-80 md:w-60 w-full'>
-							<input
-								type='text'
-								placeholder='Search Products'
-								className=' input input-bordered rounded-full border-black w-full h-10 md:w-auto'
-							/>
-							<div className='absolute top-2 lg:right-5 md:right-5 right-2 '>
-								<Icon className='text-2xl' icon='circum:search' />
-							</div>
-						</div> */}
           {user._id && user.isAdmin && user.role === "admin" && (
             <div className="bg-[#3B95B0] p-2 rounded-md text-white lg:block hidden">
               <Link to="/dashboard">Dashboard</Link>
@@ -147,28 +146,30 @@ const Navbar = () => {
                 </Link>
               </>
             ) : (
-              <Link
-                to="/login"
-                className=" rounded-full lg:w-[122px] bg-red-600 hover:bg-[#03384D] hover:text-white transition text-white duration-300 ease-in-out font-medium md:w-20 text-xl md:h-10 lg:h-10  px-5 py-1 border-black"
-              >
-                login
+              <Link to="/login">
+                <span className="px-5 bg-red-500 text-white py-2 rounded-full font-bold hover:bg-[#03384D] duration-300">
+                  Login
+                </span>
               </Link>
             )}
           </div>
 
-          <div className="md:w-9 relative hover:scale-110">
+          <div className="md:w-9 relative hover:scale-110 duration-300">
             <Link to="/cart">
-              <Icon className="w-full text-3xl" icon="fluent:cart-16-regular" />
+              <Icon
+                className="w-full"
+                icon="fluent:cart-16-regular"
+                width={35}
+              />
             </Link>
             <div className="badge bg-[#3B95B0] border-2 gap-2 absolute -top-0 -right-4 text-white">
               {cartLength}
             </div>
-            {/* <div className="badge badge-primary absolute -top-0 -right-8">+99</div> */}
           </div>
           {user._id && (
             <div
               onClick={logOut}
-              className="p-2 font-bold text-white rounded bg-gray-500  lg:block hidden"
+              className="p-2 font-bold text-white rounded bg-gray-500  lg:block hidden cursor-pointer hover:translate-x-1 duration-300"
             >
               Logout
             </div>
@@ -183,19 +184,6 @@ const Navbar = () => {
             />
           </button>
         </div>
-
-        {/* <div className="flex gap-3 items-center ">
-          <NavLink to="/login" className="">
-            <Icon icon="mdi:user" className="text-3xl" />
-          </NavLink>
-          <NavLink
-            to="/cart"
-            className="flex justify-center items-center gap-2"
-          >
-            <Icon icon="fluent:cart-16-regular" className="text-3xl" />
-          </NavLink>
-         
-        </div> */}
       </nav>
     </div>
   );

@@ -21,7 +21,7 @@ const mailHandler = async (req, res) => {
 
 	// Compose the verification link
 
-	const forgetPasswordLink = `${process.env.CLIENT_URL}/user/forget-password/${passwordResetToken}`;
+	const forgetPasswordLink = `${process.env.CLIENT_URL}/user/forget-password?resetId=${passwordResetToken}`;
 	const verifyEmailLink = `${process.env.APP_URL}/api/v1/user/verify/${verificationToken}`;
 
 	const verificationLink = verificationToken

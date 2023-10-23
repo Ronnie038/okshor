@@ -17,7 +17,7 @@ const NewsBd = () => {
         setProducts(data.products);
       })
       .catch((error) => console.log(error));
-  }, [products]);
+  }, []);
   return (
     <div>
       <div className="flex flex-col md:flex-row md:gap-4 w-10/12 md:w-[88%] lg:w-10/12 mx-auto ">

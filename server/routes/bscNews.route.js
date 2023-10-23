@@ -13,5 +13,7 @@ router
 
 router
 	.route('/:id')
+	.get(bcsController.getBcsById)
+	.put(verifyToken, authorization('admin'), bcsController.updateBcsById)
 	.delete(verifyToken, authorization('admin'), bcsController.deleteNewsById);
 module.exports = router;

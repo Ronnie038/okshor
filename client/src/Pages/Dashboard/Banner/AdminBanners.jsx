@@ -47,7 +47,7 @@ const AdminBanners = () => {
   };
 
   return (
-    <div className="flex flex-wrap justify-between p-5 md:p-10 gap-3">
+    <div className="flex flex-wrap p-5 md:p-10 gap-3">
       {banners?.data?.map((item) => (
         <div
           key={item._id}

@@ -39,14 +39,13 @@ const AddPdf = () => {
   return (
     <div className="w-11/12 mx-auto">
       {" "}
-      <h1 className="text-3xl my-8 font-semibold">Add PdfNewses</h1>
+      <h1 className="text-3xl my-8 font-bold">Add PdfNewses</h1>
       <form action="" onSubmit={handleSubmit}>
         <div>
           <div className="w-full mt-5">
             <div className="flex  gap-6">
               <div className="w-full">
-                <label className=" font-semibold cursor-pointer">Pdf</label>{" "}
-                <br />
+                <label className=" font-bold cursor-pointer">Pdf</label> <br />
                 <input
                   autoComplete="off"
                   required
@@ -61,8 +60,8 @@ const AddPdf = () => {
             </div>
             {/* Image box    */}
           </div>
-          <div className="w-full mt-3">
-            <label className="font-semibold cursor-pointer" htmlFor="category">
+          <div className="w-full mt-3 flex gap-5">
+            <label className="font-bold cursor-pointer" htmlFor="category">
               Category
             </label>{" "}
             <br />
@@ -72,7 +71,7 @@ const AddPdf = () => {
               onChange={(e) => {
                 handleInput(e);
               }}
-              className="my-2"
+              className="border py-1 px-5"
               id=""
             >
               <option value="">Select Category</option>
@@ -82,7 +81,7 @@ const AddPdf = () => {
             </select>
           </div>
           <div className="w-full mt-5">
-            <label className="font-semibold cursor-pointer" htmlFor="title">
+            <label className="font-bold cursor-pointer" htmlFor="title">
               Pdf Title
             </label>{" "}
             <br />
@@ -91,14 +90,14 @@ const AddPdf = () => {
               className="border w-full border-purple-200 mt-3 p-3 "
               type="text"
               name="title"
-              placeholder="গরুর চিকিৎসা কাজে কেনা গাড়ির ব্যাক্তিগত ব্যাবহার"
+              placeholder="আপনার পি ডি এফ-এর টাইটেল দেন..."
               id="title"
               required={true}
             />
           </div>
 
           <div className="mt-6">
-            <label className=" font-semibold cursor-pointer">
+            <label className=" font-bold cursor-pointer">
               PdfNews Descripton
             </label>{" "}
             <br />
