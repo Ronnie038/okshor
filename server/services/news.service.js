@@ -11,7 +11,7 @@ exports.getNewsService = async (req) => {
 	if (category === 'all') query = {};
 	// console.log(queryData);
 	console.log(category);
-	const news = await News.find(query);
+	const news = await News.find(query).sort({ updatedAt: -1 });
 
 	return news;
 };

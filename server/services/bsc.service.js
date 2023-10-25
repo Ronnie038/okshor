@@ -13,7 +13,7 @@ exports.getBcsNewsSerivice = async (req) => {
 	}
 	if (category === 'all') query = {};
 
-	const bcsNewses = await Bsc.find(query).sort({ createdAt: -1 });
+	const bcsNewses = await Bsc.find(query).sort({ updatedAt: -1 });
 
 	return bcsNewses;
 };

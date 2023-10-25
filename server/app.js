@@ -62,8 +62,29 @@ const newsRoute = require('./routes/news.route');
 const pdfRoute = require('./routes/pdf.route');
 const bcsNewsRoute = require('./routes/bscNews.route');
 const bannerRoutes = require('./routes/banner.route');
+const contactMail = require('./utils/contactMail');
 
+// mailRoute
+app.post('/api/v1/contact', async (req, res) => {
+	try {
+		const userData = req.body;
+		contactMail(userData);
+
+		console.log(userData);
+
+		res.status(200).json({
+			success: true,
+			message: 'message sent',
+		});
+	} catch (error) {
+		res.status(500).json({
+			success: false,
+			message: error.message,
+		});
+	}
+});
 // Root route
+
 app.get('/', (req, res) => {
 	return res.send('hello from behind');
 });

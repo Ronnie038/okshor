@@ -203,7 +203,7 @@ const AddNews = () => {
 						<textarea
 							required
 							onChange={handleInput}
-							name='mainDescription'
+							name='description'
 							id='shortDesc'
 							cols='30'
 							rows='3'

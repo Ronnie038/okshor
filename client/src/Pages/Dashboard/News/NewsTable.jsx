@@ -2,6 +2,7 @@ import { Icon } from '@iconify/react';
 import { Link } from 'react-router-dom';
 
 import swal from 'sweetalert';
+import { setTimeformat } from '../../../api/setTimeFormat';
 
 const apiBaseUrl = import.meta.env.VITE_REACT_APP_API_URL;
 const NewsTable = ({ newses, setRefetch }) => {
@@ -43,17 +44,21 @@ const NewsTable = ({ newses, setRefetch }) => {
 					<thead className='text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400'>
 						<tr>
 							<th scope='col' className='px-6 py-3'>
-								News Id
+								SN
 							</th>
 							{/* {!newses[0]?.video && (
 								<th scope='col' className='px-6 py-3'>
 									Image
 								</th>
 							)} */}
+							<th scope='col' className='px-6 py-3'>
+								Date
+							</th>
 
 							<th scope='col' className='px-6 py-3'>
 								Title
 							</th>
+
 							<th scope='col' className='px-6 py-3'>
 								Category
 							</th>
@@ -67,7 +72,7 @@ const NewsTable = ({ newses, setRefetch }) => {
 						</tr>
 					</thead>
 					<tbody>
-						{newses?.map((news) => (
+						{newses?.map((news, index) => (
 							<tr
 								key={news._id}
 								className='bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600'
@@ -76,22 +81,12 @@ const NewsTable = ({ newses, setRefetch }) => {
 									scope='row'
 									className='px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white'
 								>
-									{news._id}
+									{index + 1}
 								</th>
-								{/* {!news.video && (
-									<td className='px-6 py-4'>
-										<div className='flex gap-1'>
-											<div className='h-16 w-16 rounded-md overflow-hidden'>
-												<img
-													src={news.image}
-													alt='Image'
-													className='object-cover object-center h-full w-full'
-												/>
-											</div>
-										</div>
-									</td>
-								)} */}
+								<td className='px-6 py-4'>{setTimeformat(news?.updatedAt)}</td>
+
 								<td className='px-6 py-4'>{news.title}</td>
+
 								<td className='px-6 py-4'>{news.categoryTitle}</td>
 
 								<td className='px-6 py-4'>

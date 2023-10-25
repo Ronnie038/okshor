@@ -49,6 +49,7 @@ import UpdateNews from '../Pages/Dashboard/News/UpdateNews';
 import ForgetPassword from '../Pages/ForgetPassword/ForgetPassword';
 import ForgetPasswordRequest from '../Pages/ForgetPassword/ForgetPasswordRequest';
 import UpdateBcsNews from '../Pages/Dashboard/BcsNews/UpdateBcs';
+import SingleBcsNews from '../Pages/BcsCategory/SingleBcsNews';
 // import Pdf from "../Pages/Dashboard/Pdf/Pdf";
 const router = createBrowserRouter([
 	{
@@ -100,6 +101,10 @@ const router = createBrowserRouter([
 			{
 				path: '/bcs/:category',
 				element: <BcsCategory />,
+			},
+			{
+				path: 'singleBcsNews/:id',
+				element: <SingleBcsNews />,
 			},
 			{
 				path: '/বই-সমাবেশ',
