@@ -7,6 +7,7 @@ const BannerSchema = new mongoose.Schema(
 			type: String,
 		},
 		category: String,
+		categoryTitle: String,
 		image: {
 			type: String,
 			required: true,

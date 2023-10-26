@@ -1,5 +1,6 @@
 const Bcs = require('../models/Bcs');
 const { getBcsNewsSerivice } = require('../services/bsc.service');
+const { deleteImages } = require('../utils/deleteImages');
 
 exports.createBcs = async (req, res) => {
 	try {
@@ -111,16 +112,18 @@ exports.deleteNewsById = async (req, res) => {
 	try {
 		const newsId = req.params.id;
 
-		console.log(newsId);
-		// Find the product by ID and delete it
-		const deltedNews = await Bcs.findByIdAndDelete(newsId);
+		const news = await Bcs.findById(newsId);
 
-		// if (!deltedNews) {
-		//   return res.status(404).json({
-		//     status: "fail",
-		//     message: "Product not found",
-		//   });
-		// }
+		// Find the product by ID and delete it
+		if (!news) {
+			return res.status(404).json({
+				status: 'fail',
+				message: 'news not found',
+			});
+		}
+		deleteImages([news.image], 'images');
+
+		const deltedNews = await Bcs.findByIdAndDelete(newsId);
 
 		res.status(200).json({
 			success: true,

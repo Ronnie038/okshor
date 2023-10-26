@@ -1,6 +1,7 @@
 const { json } = require('express');
 const Product = require('../models/Product');
 const { getProductService } = require('../services/product.service');
+const { deleteImages } = require('../utils/deleteImages');
 
 exports.createPrduct = async (req, res) => {
 	try {
@@ -94,33 +95,62 @@ exports.getProductById = async (req, res) => {
 	}
 };
 
+// exports.deleteProduct = async (req, res) => {
+// 	try {
+// 		const productId = req.params.productId;
+
+// 		// Find the product by ID and delete it
+// 		const deletedProduct = await Product.findByIdAndDelete(productId);
+
+// 		if (!deletedProduct) {
+// 			return res.status(404).json({
+// 				status: 'fail',
+// 				message: 'Product not found',
+// 			});
+// 		}
+
+// 		res.status(200).json({
+// 			success: true,
+// 			message: 'Product deleted',
+// 			data: deletedProduct,
+// 		});
+// 	} catch (error) {
+// 		res.status(500).json({
+// 			status: 'fail',
+// 			message: 'An error occurred while deleting the product',
+// 		});
+// 	}
+// };
+
 exports.deleteProduct = async (req, res) => {
 	try {
 		const productId = req.params.productId;
 
-		// Find the product by ID and delete it
-		const deletedProduct = await Product.findByIdAndDelete(productId);
+		// Find the product by ID and retrieve its imageUrls
+		const product = await Product.findById(productId);
 
-		if (!deletedProduct) {
+		if (!product) {
 			return res.status(404).json({
 				status: 'fail',
 				message: 'Product not found',
 			});
 		}
-
+		deleteImages(product.imageUrls, 'images');
+		// Delete the product from the database
+		const deletedProduct = await Product.findByIdAndDelete(productId);
 		res.status(200).json({
 			success: true,
-			message: 'Product deleted',
+			message: 'Product and associated images deleted',
 			data: deletedProduct,
 		});
 	} catch (error) {
+		console.error(error); // Log the error for debugging purposes
 		res.status(500).json({
 			status: 'fail',
 			message: 'An error occurred while deleting the product',
 		});
 	}
 };
-
 exports.updateProduct = async (req, res) => {
 	try {
 		const productId = req.params.productId;
@@ -142,6 +172,10 @@ exports.updateProduct = async (req, res) => {
 			updateData.image = imageUrls[0];
 		} else {
 			updateData = req.body; // Use request body as update data if no files were uploaded
+		}
+
+		if (updateData.deletedImages) {
+			deleteImages(updateData.deletedImages, 'images');
 		}
 
 		// Find the product by ID and update it

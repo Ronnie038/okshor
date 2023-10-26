@@ -1,4 +1,5 @@
 const Banner = require('../models/Banner');
+const { deleteImages } = require('../utils/deleteImages');
 
 // GET all banners
 exports.getBanners = async (req, res) => {
@@ -45,7 +46,18 @@ exports.createBanner = async (req, res) => {
 // DELETE a banner
 exports.deleteBanner = async (req, res) => {
 	try {
-		const deletedBanner = await Banner.findByIdAndDelete(req.params.id);
+		const { id } = req.params;
+		const banner = await Banner.findById(id);
+
+		if (!banner) {
+			return res.status(200).json({
+				success: false,
+				message: 'Banner not found',
+			});
+		}
+		deleteImages([banner.image], 'images');
+		// return;
+		const deletedBanner = await Banner.findByIdAndDelete(id);
 		if (!deletedBanner) {
 			return res.status(403).json({
 				success: false,

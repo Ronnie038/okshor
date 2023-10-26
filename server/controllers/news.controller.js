@@ -1,5 +1,6 @@
 const News = require('../models/News');
 const { getNewsService } = require('../services/news.service');
+const { deleteImages } = require('../utils/deleteImages');
 
 exports.createNews = async (req, res) => {
 	try {
@@ -114,6 +115,16 @@ exports.deleteNewsById = async (req, res) => {
 	try {
 		const newsId = req.params._id;
 
+		const news = await News.findById(newsId);
+
+		if (!news) {
+			return res.status(403).json({
+				success: false,
+				message: 'news not found',
+			});
+		}
+
+		deleteImages([news.image], 'images');
 		// Find the product by ID and delete it
 		const deltedNews = await News.findByIdAndDelete(newsId);
 

@@ -33,6 +33,7 @@ exports.signup = async (req, res, next) => {
 
 // User Login
 const cookie = require('cookie');
+const { deleteImages } = require('../utils/deleteImages');
 
 exports.login = async (req, res, next) => {
 	try {
@@ -204,8 +205,12 @@ exports.updateUser = async (req, res) => {
 		const _id = req.params.id;
 		let updateData;
 		let image;
+		const user = await User.findById(_id);
 
 		if (req.file) {
+			if (user.image) {
+				deleteImages([user.image]);
+			}
 			updateData = JSON.parse(req.body.profile); // Updated data from the request body
 			const imageUrl = `${process.env.APP_URL}/images/${req.file.filename}`;
 
