@@ -1,0 +1,72 @@
+.htmlString > .ql-align-center {
+  text-align: center;
+}
+.htmlString > .ql-align-right {
+  text-align: right;
+}
+
+.htmlString > .ql-size-small {
+  font-size: 0.75em;
+}
+.htmlString > .ql-size-large {
+  font-size: 1.5em;
+}
+.htmlString > .ql-size-huge {
+  font-size: 2.5em;
+}
+
+.htmlString > h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: bold !important;
+}
+
+.htmlString > h1 {
+  font-size: 2.125rem !important;
+}
+.htmlString > h2 {
+  font-size: 1.875rem !important;
+}
+.htmlString > h3 {
+  font-size: 1.5rem !important;
+}
+.htmlString > h4 {
+  font-size: 1.25rem !important;
+}
+.htmlString > h5 {
+  font-size: 1rem !important;
+}
+.htmlString > h6 {
+  font-size: 1rem !important;
+}
+
+.htmlString > ol {
+  list-style-type: decimal !important;
+  margin-left: 20px !important;
+  padding-left: 20px !important;
+}
+.htmlString > ul {
+  list-style-type: disc !important;
+  margin-left: 20px !important;
+  padding-left: 20px !important;
+}
+
+@media (max-width: 768px) {
+  .htmlString > h1 {
+    font-size: 1.875rem !important;
+  }
+  .htmlString > h2 {
+    font-size: 1.5rem !important;
+  }
+  .htmlString > h3 {
+    font-size: 1.25rem !important;
+  }
+  .htmlString > h4,
+  h5,
+  h6 {
+    font-size: 1rem !important;
+  }
+}
